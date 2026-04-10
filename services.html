@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — TalentBridge Recruitment Platform</title>
+  <meta name="description"
+    content="Explore TalentBridge's full suite of recruitment services: resume screening, candidate sourcing, interview scheduling, employer solutions, and career guidance." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .pricing-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 2px solid var(--border);
+      text-align: center;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.popular {
+      border-color: var(--primary);
+    }
+
+    .pricing-card.popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: 16px;
+      right: -24px;
+      background: var(--primary);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      transform-origin: center;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .pricing-card.popular:hover {
+      box-shadow: 0 20px 60px rgba(26, 86, 219, .2);
+    }
+
+    .price-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+    }
+
+    .price-period {
+      font-size: .88rem;
+      color: var(--text-muted);
+    }
+
+    .pricing-features {
+      text-align: left;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9rem;
+    }
+
+    .pricing-features li i {
+      color: var(--success);
+    }
+
+    .pricing-features li.na {
+      color: var(--text-light);
+    }
+
+    .pricing-features li.na i {
+      color: var(--border);
+    }
+
+    .service-zigzag-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .service-zigzag-row.reverse {
+      direction: rtl;
+    }
+
+    .service-zigzag-row.reverse>* {
+      direction: ltr;
+    }
+
+    .service-img {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .service-img img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+      </a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a
+          href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+      href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+    <div class="mobile-actions"><a href="login.html" class="btn btn-secondary">Login</a></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="position:relative; overflow:hidden; background:linear-gradient(135deg,rgba(27, 27, 27, 0.075) 0%,rgba(49, 53, 63, 0.8) 100%);">
+    <video src="assest/hero_animation.mp4" autoplay loop muted playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;"></video>
+    <div class="container" style="position:relative; z-index:1;">
+      <span class="section-label"
+        style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);margin-bottom:16px;"><i
+          class="fas fa-cogs"></i> Our Services</span>
+      <h1>End-to-End Recruitment <br />Solutions That Deliver</h1>
+      <p>From resume screening to final offer — we provide every service you need to hire better and grow faster.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"
+          style="font-size:.7rem;"></i><span>Services</span></div>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES GRID -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-layer-group"></i> Core Services</span>
+        <h2>What We <span class="text-primary">Offer</span></h2>
+        <p>A comprehensive suite of recruitment services designed to remove friction and deliver results at every stage
+          of the hiring journey.</p>
+      </div>
+      <div class="grid-3" style="gap:28px;">
+        <div class="service-feature-card animate-on-scroll stagger-1">
+          <div class="service-icon-lg" style="background:#dbeafe;color:#1d4ed8;"><i class="fas fa-file-alt"></i></div>
+          <h3>Resume Screening</h3>
+          <p style="font-size:.9rem;">AI-powered resume analysis that identifies top candidates in minutes, not days.
+            Eliminate bias and focus on skills that matter.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> ATS-compatible screening</li>
+            <li><i class="fas fa-check-circle"></i> Keyword & skill matching</li>
+            <li><i class="fas fa-check-circle"></i> Ranked shortlists delivered</li>
+            <li><i class="fas fa-check-circle"></i> Bias-free evaluation</li>
+          </ul>
+        </div>
+        <div class="service-feature-card animate-on-scroll stagger-2">
+          <div class="service-icon-lg" style="background:#d1fae5;color:#065f46;"><i class="fas fa-search-plus"></i>
+          </div>
+          <h3>Candidate Sourcing</h3>
+          <p style="font-size:.9rem;">Access our network of 750,000+ pre-vetted professionals and tap into passive
+            talent pools your competitors can't reach.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> 20+ sourcing channels</li>
+            <li><i class="fas fa-check-circle"></i> Passive talent outreach</li>
+            <li><i class="fas fa-check-circle"></i> Diversity hiring focus</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated talent advisor</li>
+          </ul>
+        </div>
+        <div class="service-feature-card animate-on-scroll stagger-3">
+          <div class="service-icon-lg" style="background:#fef3c7;color:#92400e;"><i class="fas fa-calendar-check"></i>
+          </div>
+          <h3>Interview Scheduling</h3>
+          <p style="font-size:.9rem;">Eliminate scheduling headaches with our automated coordination system that handles
+            time zones, reminders, and rescheduling.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> 1-click calendar sync</li>
+            <li><i class="fas fa-check-circle"></i> Automated reminders</li>
+            <li><i class="fas fa-check-circle"></i> Video interview platform</li>
+            <li><i class="fas fa-check-circle"></i> Multi-round tracking</li>
+          </ul>
+        </div>
+        <div class="service-feature-card animate-on-scroll stagger-1">
+          <div class="service-icon-lg" style="background:#ede9fe;color:#5b21b6;"><i class="fas fa-building"></i></div>
+          <h3>Employer Hiring Solutions</h3>
+          <p style="font-size:.9rem;">End-to-end RPO packages for growing companies. From job scoping to offer
+            management — we handle everything.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Recruitment Process Outsourcing</li>
+            <li><i class="fas fa-check-circle"></i> Employer branding support</li>
+            <li><i class="fas fa-check-circle"></i> Hiring analytics dashboard</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated account manager</li>
+          </ul>
+        </div>
+        <div class="service-feature-card animate-on-scroll stagger-2">
+          <div class="service-icon-lg" style="background:#fce7f3;color:#9d174d;"><i class="fas fa-star"></i></div>
+          <h3>Career Guidance</h3>
+          <p style="font-size:.9rem;">One-on-one career coaching with certified professionals. Optimize your profile,
+            perfect your pitch, and negotiate your best offer.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Resume &amp; LinkedIn optimization</li>
+            <li><i class="fas fa-check-circle"></i> Mock interview sessions</li>
+            <li><i class="fas fa-check-circle"></i> Salary negotiation coaching</li>
+            <li><i class="fas fa-check-circle"></i> 90-day onboarding support</li>
+          </ul>
+        </div>
+        <div class="service-feature-card animate-on-scroll stagger-3">
+          <div class="service-icon-lg" style="background:#e0f2fe;color:#0369a1;"><i class="fas fa-chart-bar"></i></div>
+          <h3>Hiring Analytics</h3>
+          <p style="font-size:.9rem;">Real-time dashboards and reports that give you complete visibility into your
+            hiring pipeline, cost-per-hire, and team performance.</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Pipeline health metrics</li>
+            <li><i class="fas fa-check-circle"></i> Time-to-hire tracking</li>
+            <li><i class="fas fa-check-circle"></i> Cost-per-hire analysis</li>
+            <li><i class="fas fa-check-circle"></i> Predictive insights</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZIGZAG DETAIL SECTIONS -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-info-circle"></i> Deep Dive</span>
+        <h2>How Each Service <span class="text-primary">Works</span></h2>
+      </div>
+
+      <div class="service-zigzag-row animate-on-scroll">
+        <div class="service-img">
+          <img src="assest/services1.webp" alt="Resume screening process" />
+        </div>
+        <div>
+          <span class="section-label"><i class="fas fa-file-alt"></i> Resume Screening</span>
+          <h3>From 500 Applications to 10 Perfect Candidates</h3>
+          <p style="margin:14px 0;">Our AI parses and ranks every resume against the job requirements — identifying the
+            best fits with a matching score. Recruiters spend time on people, not paperwork.</p>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:20px;">
+            <div
+              style="display:flex; gap:12px; align-items:center; padding:14px; background:#fff; border-radius:var(--radius); border:1px solid var(--border);">
+              <div
+                style="width:36px; height:36px; background:var(--primary-light); color:var(--primary); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div><strong style="font-size:.9rem;">Processing in 60 Seconds</strong>
+                <p style="font-size:.82rem; margin:0;">Instant parsing and ranking of all submitted resumes</p>
+              </div>
+            </div>
+            <div
+              style="display:flex; gap:12px; align-items:center; padding:14px; background:#fff; border-radius:var(--radius); border:1px solid var(--border);">
+              <div
+                style="width:36px; height:36px; background:#d1fae5; color:var(--success); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-percentage"></i>
+              </div>
+              <div><strong style="font-size:.9rem;">93% Accuracy Rate</strong>
+                <p style="font-size:.82rem; margin:0;">Industry-leading match precision validated by 1M+ placements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-zigzag-row reverse animate-on-scroll">
+        <div class="service-img">
+          <img src="assest/services2.webp" alt="Interview scheduling" />
+        </div>
+        <div>
+          <span class="section-label"><i class="fas fa-calendar-check"></i> Interview Scheduling</span>
+          <h3>Never Miss a Great Candidate Due to Scheduling Chaos</h3>
+          <p style="margin:14px 0;">Our smart scheduling system automatically finds optimal interview times, sends
+            calendar invites, and follows up with all parties — so you can focus on the conversation.</p>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:20px;">
+            <div
+              style="display:flex; gap:12px; align-items:center; padding:14px; background:#fff; border-radius:var(--radius); border:1px solid var(--border);">
+              <div
+                style="width:36px; height:36px; background:var(--primary-light); color:var(--primary); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <div><strong style="font-size:.9rem;">Google &amp; Outlook Sync</strong>
+                <p style="font-size:.82rem; margin:0;">Seamless integration with all major calendar platforms</p>
+              </div>
+            </div>
+            <div
+              style="display:flex; gap:12px; align-items:center; padding:14px; background:#fff; border-radius:var(--radius); border:1px solid var(--border);">
+              <div
+                style="width:36px; height:36px; background:#fef3c7; color:var(--accent-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-bell"></i>
+              </div>
+              <div><strong style="font-size:.9rem;">Smart Reminders</strong>
+                <p style="font-size:.82rem; margin:0;">Automated reminders reduce no-show rates by 78%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-tags"></i> Pricing</span>
+        <h2>Simple, Transparent <span class="text-primary">Pricing</span></h2>
+        <p>No hidden fees. Choose the plan that fits your hiring needs and scale as you grow.</p>
+      </div>
+      <div class="grid-3" style="gap:28px; align-items:start;">
+        <div class="pricing-card animate-on-scroll stagger-1">
+          <p
+            style="font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:12px;">
+            Starter</p>
+          <div class="price-num">₹4,999</div>
+          <div class="price-period">per month</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Up to 5 active job posts</li>
+            <li><i class="fas fa-check"></i> Resume screening (AI)</li>
+            <li><i class="fas fa-check"></i> Basic candidate search</li>
+            <li><i class="fas fa-check"></i> Email support</li>
+            <li class="na"><i class="fas fa-times"></i> Interview scheduling tool</li>
+            <li class="na"><i class="fas fa-times"></i> Dedicated account manager</li>
+          </ul>
+          <a href="login.html" class="btn btn-secondary w-full" style="justify-content:center;">Get Started</a>
+        </div>
+        <div class="pricing-card popular animate-on-scroll stagger-2">
+          <p
+            style="font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--primary); margin-bottom:12px;">
+            Professional</p>
+          <div class="price-num">₹14,999</div>
+          <div class="price-period">per month</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Unlimited job posts</li>
+            <li><i class="fas fa-check"></i> Advanced AI screening</li>
+            <li><i class="fas fa-check"></i> Full candidate sourcing</li>
+            <li><i class="fas fa-check"></i> Interview scheduling tool</li>
+            <li><i class="fas fa-check"></i> Hiring analytics dashboard</li>
+            <li class="na"><i class="fas fa-times"></i> Dedicated account manager</li>
+          </ul>
+          <a href="login.html" class="btn btn-primary w-full" style="justify-content:center;">Start Free Trial</a>
+        </div>
+        <div class="pricing-card animate-on-scroll stagger-3">
+          <p
+            style="font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:12px;">
+            Enterprise</p>
+          <div class="price-num" style="font-size:2rem; margin-bottom: 25px;">Custom</div>
+          <div class="price-period">tailored pricing</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Everything in Professional</li>
+            <li><i class="fas fa-check"></i> Full RPO solution</li>
+            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+            <li><i class="fas fa-check"></i> Employer branding package</li>
+            <li><i class="fas fa-check"></i> SLA-backed delivery</li>
+            <li><i class="fas fa-check"></i> Custom integrations (ATS/HRIS)</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary w-full" style="justify-content:center;">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-question-circle"></i> FAQ</span>
+        <h2>Frequently Asked <span class="text-primary">Questions</span></h2>
+        <p>Everything you need to know about our services. Can't find what you're looking for? Contact our team.</p>
+      </div>
+      <div style="max-width:780px; margin:0 auto;">
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">How quickly can TalentBridge fill a position? <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our average time-to-fill is 14 working days for professional roles, versus the
+              industry average of 42 days. For executive searches, it typically ranges from 3–6 weeks depending on the
+              seniority and specialization required.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">Do you offer a replacement guarantee? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes! All our placements come with a 90-day replacement guarantee. If a placed
+              candidate leaves or isn't the right fit within the first 90 days, we will source and place a replacement
+              at no additional charge.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">Can candidates use TalentBridge for free? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely. TalentBridge is completely free for job seekers. You can create a
+              profile, browse jobs, apply to positions, and access basic career guidance at no cost. Premium career
+              coaching packages are available as optional paid add-ons.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">What industries do you specialize in? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We have dedicated specialist teams covering 20+ verticals including
+              Technology, Finance, Healthcare, Manufacturing, FMCG, Media, Legal, Education, Logistics, and more. Each
+              recruiter has deep domain expertise in their assigned sector.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">How does AI matching work? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our AI engine analyzes 200+ data points per candidate including skills,
+              experience trajectory, company culture fit, career goals, and compensation expectations. It then
+              cross-references these against job requirements to generate a proprietary match score for each role.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">What is your data privacy policy? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We are fully GDPR and PDPA compliant. All candidate data is stored securely,
+              encrypted at rest and in transit. We never share personal data with third parties without explicit
+              consent, and candidates can request data deletion at any time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:#fff; padding:64px 0;">
+    <div class="container">
+      <div class="cta-banner animate-on-scroll">
+        <div class="content">
+          <h2>Ready to Transform Your Hiring?</h2>
+          <p>Start your free trial today and see why 12,000 companies trust TalentBridge to find their best people.</p>
+          <div class="btn-group">
+            <a href="contact.html" class="btn btn-accent btn-lg"><i class="fas fa-phone"></i> Talk to Sales</a>
+            <a href="login.html" class="btn btn-white btn-lg">Start Free Trial</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo" style="margin-bottom:16px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <p>Connecting ambitious professionals with world-class opportunities since 2019. Your trusted partner in
+            career growth and talent acquisition.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>For Candidates</h5>
+          <ul>
+            <li><a href="404.html">Browse Jobs</a></li>
+            <li><a href="404.html">Job Categories</a></li>
+            <li><a href="404.html">Career Guidance</a></li>
+            <li><a href="404.html">Resume Tips</a></li>
+            <li><a href="404.html">Create Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Employers</h5>
+          <ul>
+            <li><a href="404.html">Post a Job</a></li>
+            <li><a href="404.html">Talent Search</a></li>
+            <li><a href="404.html">Recruitment Solutions</a></li>
+            <li><a href="404.html">Employer Brand</a></li>
+            <li><a href="404.html">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TalentBridge. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

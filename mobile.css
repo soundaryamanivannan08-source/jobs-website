@@ -1,0 +1,493 @@
+/* =====================================================
+   TalentBridge — Mobile Responsive Overrides
+   Full mobile enhancement patch
+   ===================================================== */
+
+/* ── Global Mobile Fixes ── */
+*, *::before, *::after { box-sizing: border-box; }
+body { overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+table { width: 100%; }
+
+/* ── Navbar full mobile ── */
+@media (max-width: 900px) {
+  .navbar-nav, .navbar-actions { display: none !important; }
+  .hamburger { display: flex !important; }
+
+  .navbar-logo { font-size: 1.25rem; }
+  .navbar-logo .logo-icon { width: 32px; height: 32px; font-size: .95rem; }
+
+  .mobile-menu { display: none; }
+  .mobile-menu.open { display: flex; }
+}
+
+/* ── Hero mobile ── */
+@media (max-width: 900px) {
+  .hero { min-height: auto; padding-top: calc(var(--navbar-height) + 40px); padding-bottom: 60px; }
+  .hero .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+  .hero-image-wrap { display: none; }
+  .hero h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
+  .hero p { font-size: 1rem; }
+  .hero-actions { flex-direction: column; gap: 12px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-stats { gap: 24px; }
+  .hero-stat strong { font-size: 1.5rem; }
+}
+
+/* ── Search bar mobile ── */
+@media (max-width: 640px) {
+  .search-bar { flex-wrap: wrap; gap: 8px; padding: 12px; border-radius: var(--radius); }
+  .search-bar input { min-width: 100%; }
+  .search-bar select { flex: 1; min-width: 120px; }
+  .search-bar .btn { width: 100%; justify-content: center; }
+}
+
+/* ── Stats bar mobile ── */
+@media (max-width: 640px) {
+  .stats-bar .container { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-item strong { font-size: 1.5rem; }
+}
+
+/* ── Section mobile ── */
+@media (max-width: 640px) {
+  .section { padding: 56px 0; }
+  .section-sm { padding: 40px 0; }
+  .section-header { margin-bottom: 36px; }
+  .container { padding: 0 16px; }
+}
+
+/* ── Grid mobile ── */
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr !important; gap: 32px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 540px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ── CTA Banner mobile ── */
+@media (max-width: 768px) {
+  .cta-banner { padding: 48px 28px; border-radius: var(--radius-lg); }
+  .cta-banner h2 { font-size: 1.6rem; }
+  .cta-banner .btn-group { flex-direction: column; gap: 12px; }
+  .cta-banner .btn-group .btn { justify-content: center; }
+}
+
+/* ── Footer mobile ── */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 540px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  .footer-bottom-links { justify-content: center; }
+}
+
+/* ── Page hero mobile ── */
+@media (max-width: 640px) {
+  .page-hero { padding: calc(var(--navbar-height) + 40px) 0 40px; }
+  .page-hero h1 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+  .breadcrumb { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ── Zigzag rows mobile ── */
+@media (max-width: 900px) {
+  .zig-row, .zig-row.reverse,
+  .service-zigzag-row, .service-zigzag-row.reverse {
+    grid-template-columns: 1fr !important;
+    direction: ltr !important;
+    gap: 32px;
+  }
+  .zig-img img, .service-img img { height: 240px; }
+}
+
+/* ── Category cards mobile ── */
+@media (max-width: 540px) {
+  .category-card { padding: 20px 16px; }
+  .category-icon { width: 52px; height: 52px; font-size: 1.3rem; }
+}
+
+/* ── Job cards mobile ── */
+@media (max-width: 640px) {
+  .job-card { padding: 18px; }
+  .job-card-header { flex-direction: column; gap: 8px; }
+  .job-footer { flex-wrap: wrap; gap: 10px; }
+}
+
+/* ── Testimonials mobile ── */
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Partners mobile ── */
+@media (max-width: 900px) {
+  .partners-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 540px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .partner-item { padding: 0 12px; }
+}
+
+/* ── Tab bar mobile ── */
+@media (max-width: 640px) {
+  .tab-bar { flex-wrap: wrap; gap: 6px; }
+  .tab-btn { flex: none; min-width: calc(50% - 6px); }
+  .tab-pane.active { grid-template-columns: 1fr !important; }
+}
+
+/* ── Jobs Page: Filter sidebar mobile overlay ── */
+@media (max-width: 900px) {
+  .jobs-layout { grid-template-columns: 1fr !important; }
+  .filter-sidebar {
+    position: fixed !important;
+    top: 0; left: 0; bottom: 0;
+    width: 300px;
+    z-index: 800;
+    overflow-y: auto;
+    border-radius: 0;
+    border-right: 1px solid var(--border);
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    box-shadow: var(--shadow-xl);
+  }
+  .filter-sidebar.open { transform: translateX(0); }
+  .filter-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 799;
+    backdrop-filter: blur(2px);
+  }
+  .filter-overlay.open { display: block; }
+  .mobile-filter-btn { display: flex !important; }
+  .filter-close-btn { display: flex !important; }
+}
+@media (min-width: 901px) {
+  .mobile-filter-btn { display: none !important; }
+  .filter-close-btn { display: none !important; }
+  .filter-overlay { display: none !important; }
+}
+
+/* ── Jobs list mobile ── */
+@media (max-width: 640px) {
+  .job-list-card { flex-direction: column; gap: 14px; padding: 18px; }
+  .job-list-actions { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .jobs-count { flex-direction: column; gap: 10px; align-items: flex-start; }
+}
+
+/* ── Blog cards mobile ── */
+@media (max-width: 640px) {
+  .blog-card img { height: 180px; }
+  .blog-card-body { padding: 18px; }
+}
+
+/* ── Newsletter mobile ── */
+@media (max-width: 768px) {
+  .newsletter-strip { flex-direction: column; gap: 24px; padding: 36px 28px; }
+  .newsletter-form { min-width: unset; width: 100%; }
+  .newsletter-form input { min-width: unset; width: 100%; }
+}
+
+/* ── Pricing mobile ── */
+@media (max-width: 900px) {
+  .pricing-card.popular::before { right: -18px; font-size: .65rem; }
+}
+@media (max-width: 640px) {
+  .pricing-card { padding: 28px 20px; }
+}
+
+/* ── Contact page mobile ── */
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr !important; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 640px) {
+  .contact-form-card { padding: 24px 18px; }
+  .contact-info-card { padding: 18px; flex-direction: column; gap: 12px; }
+}
+
+/* ── Login page mobile ── */
+@media (max-width: 900px) {
+  .login-wrapper { grid-template-columns: 1fr !important; gap: 0; }
+  .login-promo { display: none !important; }
+  .login-card { padding: 36px 28px; }
+}
+@media (max-width: 480px) {
+  .login-card { padding: 28px 18px; border-radius: var(--radius-lg); }
+  .role-cards { grid-template-columns: 1fr; }
+  .social-login { grid-template-columns: 1fr; }
+}
+
+/* ── Dashboard mobile ── */
+@media (max-width: 900px) {
+  .dashboard-main { margin-left: 0 !important; padding: 24px 20px !important; }
+  .sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    z-index: 500;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex !important; }
+  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; gap: 16px; }
+  .dash-grid-2 { grid-template-columns: 1fr !important; gap: 24px; }
+  .dash-grid-3 { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 540px) {
+  .kpi-grid { grid-template-columns: 1fr !important; gap: 12px; }
+  .dashboard-main { padding: 20px 16px !important; }
+  .kpi-card { padding: 18px; }
+  .kpi-info strong { font-size: 1.6rem; }
+  .dashboard-header { margin-bottom: 24px; }
+}
+
+/* ── Data table mobile scroll ── */
+@media (max-width: 768px) {
+  .data-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table table { min-width: 560px; }
+  .data-table th, .data-table td { padding: 10px 12px; font-size: .8rem; }
+}
+
+/* ── Profile card mobile ── */
+@media (max-width: 540px) {
+  .profile-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Timeline mobile ── */
+@media (max-width: 640px) {
+  .timeline { padding-left: 24px; }
+  .timeline-dot { left: -22px; }
+}
+
+/* ── FAQ mobile ── */
+@media (max-width: 640px) {
+  .faq-question { padding: 16px 18px; font-size: .9rem; }
+  .faq-answer-inner { padding: 0 18px 16px; }
+}
+
+/* ── Map placeholder mobile ── */
+@media (max-width: 640px) {
+  .map-placeholder { height: 260px; }
+}
+
+/* ── KPI card mobile ── */
+@media (max-width: 640px) {
+  .kpi-icon { width: 42px; height: 42px; font-size: 1.1rem; }
+}
+
+/* ── Sidebar overlay backdrop ── */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 399;
+}
+.sidebar-backdrop.open { display: block; }
+
+/* ── Section label mobile ── */
+@media (max-width: 640px) {
+  .section-label { font-size: .72rem; }
+  .section-header h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+}
+
+/* ── Hero cards hide on small ── */
+@media (max-width: 1024px) {
+  .hero-card { display: none; }
+}
+
+/* ── Recruiter card mobile ── */
+@media (max-width: 640px) {
+  .recruiter-activity-card { flex-wrap: wrap; }
+  .mini-chart { display: none; }
+}
+
+/* ── Team card mobile ── */
+@media (max-width: 640px) {
+  .team-card-img { height: 180px; }
+}
+
+/* ── Process step mobile ── */
+@media (max-width: 640px) {
+  .process-step { flex-direction: column; gap: 12px; }
+}
+
+/* ── Notification items mobile ── */
+@media (max-width: 540px) {
+  .notif-item { flex-direction: column; gap: 10px; }
+}
+
+/* ── Smooth scrollbar ── */
+html { scroll-behavior: smooth; }
+
+/* ── Focus visible ── */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
+
+/* ── App status card mobile ── */
+@media (max-width: 540px) {
+  .app-status-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .app-status-card > div:last-child { width: 100%; justify-content: flex-end; }
+}
+
+/* ── Dashboard header mobile ── */
+@media (max-width: 640px) {
+  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .dashboard-header > div:last-child { width: 100%; }
+  .dashboard-header .btn { flex: 1; justify-content: center; }
+  .dashboard-title h2 { font-size: 1.3rem; }
+}
+
+/* ── Skills input mobile ── */
+@media (max-width: 480px) {
+  .card > div[style*="display:flex; gap:10px"] {
+    flex-direction: column;
+  }
+  .card input.form-control { max-width: 100% !important; }
+}
+
+/* ── Admin navbar: add hamburger support ── */
+@media (max-width: 900px) {
+  .navbar .hamburger { display: flex !important; }
+}
+
+/* ── Dashboard section header mobile ── */
+@media (max-width: 540px) {
+  .dashboard-section-header { flex-wrap: wrap; gap: 10px; }
+  .dashboard-section-header h3 { font-size: 1rem; }
+}
+
+/* ── Rec job cards mobile ── */
+@media (max-width: 640px) {
+  .rec-job-card { padding: 14px; }
+}
+
+/* ── Sidebar user info mobile ── */
+@media (max-width: 360px) {
+  .sidebar-user strong { font-size: .85rem; }
+  .sidebar-user span { font-size: .7rem; }
+}
+
+/* ── Print ── */
+@media print {
+  .navbar, .sidebar, .sidebar-toggle, .hamburger, .mobile-menu { display: none !important; }
+  .dashboard-main { margin-left: 0 !important; }
+}
+
+/* =============================================================
+   DASHBOARD FULL MOBILE RESPONSIVENESS
+   ============================================================= */
+
+/* ── Sidebar toggle button (hamburger for sidebar) ── */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 600;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(26,86,219,.35);
+  cursor: pointer;
+}
+
+/* ── Dashboard layout mobile ── */
+@media (max-width: 900px) {
+  /* Show sidebar toggle */
+  .sidebar-toggle { display: flex !important; }
+
+  /* Dashboard main takes full width */
+  .dashboard-main {
+    margin-left: 0 !important;
+    padding: 24px 16px !important;
+    width: 100%;
+  }
+
+  /* Dash grids go 1 column */
+  .dash-grid-2 { grid-template-columns: 1fr !important; gap: 16px; }
+  .dash-grid-3 { grid-template-columns: 1fr !important; gap: 16px; }
+  .dash-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+
+  /* Dashboard header stacks */
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .dashboard-header > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .dashboard-header .btn { flex: 1; justify-content: center; min-width: 120px; }
+
+  /* KPI grid responsive */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+  /* Hide email on small navbars */
+  .user-email-display { display: none !important; }
+
+  /* Application status cards stack */
+  .app-status-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .app-status-card > div:last-child { width: 100%; justify-content: flex-end; }
+
+  /* Section header wraps */
+  .dashboard-section-header { flex-wrap: wrap; gap: 10px; }
+}
+
+@media (max-width: 540px) {
+  /* Single column KPI on very small */
+  .kpi-grid { grid-template-columns: 1fr !important; }
+
+  /* Dash-grid-4 single column */
+  .dash-grid-4 { grid-template-columns: 1fr !important; }
+
+  /* Dashboard main tighter padding */
+  .dashboard-main { padding: 16px 12px !important; }
+
+  /* Sidebar toggle positioning */
+  .sidebar-toggle { bottom: 16px; right: 16px; width: 44px; height: 44px; font-size: 1rem; }
+
+  /* Skills add row stacks */
+  .card > div[style*="display:flex; gap:10px"],
+  .card > div[style*="display:flex;gap:10px"] {
+    flex-direction: column !important;
+  }
+  .card input.form-control { max-width: 100% !important; }
+
+  /* Resume card action buttons stack */
+  div[style*="display:flex; align-items:center; gap:14px"] {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Ensure navbar hamburger stays visible on dashboards ── */
+@media (max-width: 900px) {
+  .dashboard-page .navbar-actions {
+    display: flex !important;
+    gap: 10px;
+  }
+  .dashboard-page .hamburger {
+    display: flex !important;
+  }
+}
+

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — TalentBridge Recruitment Platform</title>
+  <meta name="description"
+    content="Learn about TalentBridge's mission to connect top talent with great companies. Meet our expert recruitment team and discover our hiring process." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .team-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      text-align: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .team-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .team-card-body {
+      padding: 20px 20px 24px;
+    }
+
+    .team-card-body h4 {
+      margin-bottom: 4px;
+    }
+
+    .team-card-body .role {
+      font-size: .85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .team-card-body p {
+      font-size: .84rem;
+      color: var(--text-muted);
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .team-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+
+    .team-social a:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .achievement-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .achievement-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      display: block;
+    }
+
+    .value-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .value-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .value-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius);
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+      </a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="services.html">Services</a><a
+          href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+      href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+    <div class="mobile-actions"><a href="login.html" class="btn btn-secondary">Login</a></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero"
+    style="background:linear-gradient(135deg,rgba(27, 27, 27, 0.075) 0%,rgba(49, 53, 63, 0.8) 100%),url('assest/hero_about.webp') center/cover no-repeat;">
+    <div class="container" style="position:relative; z-index:1;">
+      <span class="section-label"
+        style="background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.3); margin-bottom:16px;"><i
+          class="fas fa-info-circle"></i> About Us</span>
+      <h1>Building Bridges Between <br />Talent &amp; Opportunity</h1>
+      <p>We're on a mission to transform hiring — making it faster, smarter, and more human for everyone involved.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"
+          style="font-size:.7rem;"></i><span>About</span></div>
+    </div>
+  </section>
+
+  <!-- ABOUT BRAND (Zigzag) -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid-2">
+        <div class="animate-on-scroll">
+          <span class="section-label"><i class="fas fa-building"></i> Our Story</span>
+          <h2>Who We Are</h2>
+          <p style="margin:16px 0;">Founded in 2019, TalentBridge was born from a simple frustration: hiring was broken.
+            Too slow, too impersonal, too inefficient for candidates and employers alike.</p>
+          <p>Today we're India's fastest-growing recruitment platform — combining cutting-edge AI with deep human
+            expertise to deliver placements that last. We've successfully placed over 85,000 professionals across every
+            major industry.</p>
+          <div class="grid-2" style="gap:16px; margin-top:28px;">
+            <div style="padding:16px; background:var(--primary-light); border-radius:var(--radius); text-align:center;">
+              <strong
+                style="font-size:1.8rem; font-weight:900; color:var(--primary); display:block; font-family:'Poppins',sans-serif;"><span
+                  data-target="12000" data-suffix="+">0</span></strong>
+              <span style="font-size:.85rem; color:var(--text-muted);">Successful Placements</span>
+            </div>
+            <div style="padding:16px; background:#d1fae5; border-radius:var(--radius); text-align:center;">
+              <strong
+                style="font-size:1.8rem; font-weight:900; color:var(--success); display:block; font-family:'Poppins',sans-serif;"><span
+                  data-target="5000" data-suffix="+">0</span></strong>
+              <span style="font-size:.85rem; color:var(--text-muted);">Hiring Partners</span>
+            </div>
+          </div>
+          <div class="mt-24"><a href="contact.html" class="btn btn-primary">Get in Touch <i
+                class="fas fa-arrow-right"></i></a></div>
+        </div>
+        <div class="animate-on-scroll"
+          style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-xl);">
+          <img src="assest/about1.webp" alt="TalentBridge team collaborating"
+            style="width:100%; height:400px; object-fit:cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-bullseye"></i> Purpose</span>
+        <h2>Our Mission &amp; <span class="text-primary">Vision</span></h2>
+        <p>Everything we do is guided by a clear north star: transforming how the world works, one perfect placement at
+          a time.</p>
+      </div>
+      <div class="grid-2" style="gap:32px;">
+        <div class="animate-on-scroll stagger-1"
+          style="background:linear-gradient(135deg,var(--secondary),var(--primary)); border-radius:var(--radius-lg); padding:40px 36px; color:#fff; position:relative; overflow:hidden;">
+          <div
+            style="position:absolute; top:-30px; right:-30px; width:150px; height:150px; border-radius:50%; background:rgba(255,255,255,.06);">
+          </div>
+          <div
+            style="width:60px; height:60px; background:rgba(255,255,255,.15); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:#fff; margin-bottom:20px;">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3 style="color:#fff; margin-bottom:14px;">Our Mission</h3>
+          <p style="color:rgba(255,255,255,.85); line-height:1.7;">To democratize career opportunities by connecting
+            every qualified candidate with their ideal role through technology-first, human-centric recruitment
+            solutions that are fast, fair, and effective for everyone.</p>
+        </div>
+        <div class="animate-on-scroll stagger-2"
+          style="background:linear-gradient(135deg,#f59e0b,#d97706); border-radius:var(--radius-lg); padding:40px 36px; color:#fff; position:relative; overflow:hidden;">
+          <div
+            style="position:absolute; top:-30px; right:-30px; width:150px; height:150px; border-radius:50%; background:rgba(255,255,255,.06);">
+          </div>
+          <div
+            style="width:60px; height:60px; background:rgba(255,255,255,.15); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:#fff; margin-bottom:20px;">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 style="color:#fff; margin-bottom:14px;">Our Vision</h3>
+          <p style="color:rgba(255,255,255,.9); line-height:1.7;">To become the most trusted recruitment platform in
+            Asia — a place where companies and candidates transform their futures together. We envision a world where
+            every person finds work that's meaningful, fulfilling, and rewarding.</p>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:32px; gap:20px;">
+        <div class="value-card animate-on-scroll stagger-1">
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <div>
+            <h4>Integrity</h4>
+            <p style="font-size:.88rem; margin-top:6px;">We build trust through transparency, honesty, and ethical
+              hiring practices at every step.</p>
+          </div>
+        </div>
+        <div class="value-card animate-on-scroll stagger-2">
+          <div class="value-icon" style="background:#d1fae5; color:var(--success);"><i class="fas fa-gem"></i></div>
+          <div>
+            <h4>Excellence</h4>
+            <p style="font-size:.88rem; margin-top:6px;">We deliver premium results for candidates and employers through
+              continuous innovation.</p>
+          </div>
+        </div>
+        <div class="value-card animate-on-scroll stagger-3">
+          <div class="value-icon" style="background:#fef3c7; color:var(--accent-dark);"><i class="fas fa-users"></i>
+          </div>
+          <div>
+            <h4>Inclusion</h4>
+            <p style="font-size:.88rem; margin-top:6px;">We champion diversity and ensure equal opportunity for every
+              candidate regardless of background.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIRING PROCESS -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-route"></i> Process</span>
+        <h2>Our <span class="text-primary">Hiring Process</span></h2>
+        <p>A transparent, proven, 6-step process that consistently delivers exceptional outcomes for both candidates and
+          employers.</p>
+      </div>
+      <div class="grid-3" style="gap:24px;">
+        <div class="process-step animate-on-scroll stagger-1">
+          <div class="step-num">01</div>
+          <div>
+            <h4 style="margin-bottom:8px;">Discovery Call</h4>
+            <p style="font-size:.88rem;">We learn your goals, skills, and ideal role to build a personalized placement
+              strategy.</p>
+          </div>
+        </div>
+        <div class="process-step animate-on-scroll stagger-2">
+          <div class="step-num">02</div>
+          <div>
+            <h4 style="margin-bottom:8px;">Profile Optimization</h4>
+            <p style="font-size:.88rem;">Our experts refine your resume, LinkedIn, and portfolio to maximize recruiter
+              appeal.</p>
+          </div>
+        </div>
+        <div class="process-step animate-on-scroll stagger-3">
+          <div class="step-num">03</div>
+          <div>
+            <h4 style="margin-bottom:8px;">AI Matching</h4>
+            <p style="font-size:.88rem;">Our AI scans thousands of roles and identifies the top matches for your profile
+              and goals.</p>
+          </div>
+        </div>
+        <div class="process-step animate-on-scroll stagger-1">
+          <div class="step-num">04</div>
+          <div>
+            <h4 style="margin-bottom:8px;">Interview Prep</h4>
+            <p style="font-size:.88rem;">We prepare you with mock interviews, role-specific coaching, and insider
+              company insights.</p>
+          </div>
+        </div>
+        <div class="process-step animate-on-scroll stagger-2">
+          <div class="step-num">05</div>
+          <div>
+            <h4 style="margin-bottom:8px;">Employer Introduction</h4>
+            <p style="font-size:.88rem;">We personally introduce you to hiring managers, ensuring your application
+              stands out.</p>
+          </div>
+        </div>
+        <div class="process-step animate-on-scroll stagger-3">
+          <div class="step-num">06</div>
+          <div>
+            <h4 style="margin-bottom:8px;">Offer &amp; Onboarding</h4>
+            <p style="font-size:.88rem;">We negotiate on your behalf and support your transition through the first 90
+              days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-people-group"></i> Team</span>
+        <h2>Meet Our <span class="text-primary">Expert Recruiters</span></h2>
+        <p>Our team of certified recruitment specialists brings decades of combined experience across every major
+          industry.</p>
+      </div>
+      <div class="grid-4" style="gap:24px;">
+        <div class="team-card animate-on-scroll stagger-1">
+          <img src="assest/uifaces-popular-avatar (7).webp" alt="Aisha Kumar" class="team-card-img" />
+          <div class="team-card-body">
+            <h4>Aisha Kumar</h4>
+            <p class="role">CEO &amp; Co-Founder</p>
+            <p>15+ years in executive recruitment. Former Head of HR at TCS.</p>
+            <div class="team-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i
+                  class="fab fa-twitter"></i></a></div>
+          </div>
+        </div>
+        <div class="team-card animate-on-scroll stagger-2">
+          <img src="assest/uifaces-popular-avatar (4) (1).webp" alt="Rohan Mehta" class="team-card-img" />
+          <div class="team-card-body">
+            <h4>Rohan Mehta</h4>
+            <p class="role">CTO</p>
+            <p>Ex-Google engineer. Leads our AI-powered matching platform development.</p>
+            <div class="team-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i
+                  class="fab fa-github"></i></a></div>
+          </div>
+        </div>
+        <div class="team-card animate-on-scroll stagger-3">
+          <img src="assest/uifaces-popular-avatar (3) (1).webp" alt="Priya Nair" class="team-card-img" />
+          <div class="team-card-body">
+            <h4>Priya Nair</h4>
+            <p class="role">Head of Talent</p>
+            <p>SHRM certified. Specializes in tech and finance sector placements.</p>
+            <div class="team-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i
+                  class="fab fa-twitter"></i></a></div>
+          </div>
+        </div>
+        <div class="team-card animate-on-scroll stagger-4">
+          <img src="assest/uifaces-popular-avatar (2) (1).webp" alt="Vikram Singh" class="team-card-img" />
+          <div class="team-card-body">
+            <h4>Vikram Singh</h4>
+            <p class="role">VP, Employer Relations</p>
+            <p>Built partnerships with 5,000+ top companies across India and SE Asia.</p>
+            <div class="team-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i
+                  class="fab fa-twitter"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-trophy"></i> Achievements</span>
+        <h2>Numbers That <span class="text-primary">Speak for Themselves</span></h2>
+        <p>Five years of relentless focus on quality placements has produced remarkable results.</p>
+      </div>
+      <div class="grid-4" style="gap:20px;">
+        <div class="achievement-card animate-on-scroll stagger-1">
+          <span class="achievement-num"><span data-target="85" data-suffix="K+">0</span></span>
+          <p style="font-size:.9rem; margin-top:8px;">Successful Placements</p>
+        </div>
+        <div class="achievement-card animate-on-scroll stagger-2">
+          <span class="achievement-num" style="color:var(--success);"><span data-target="12"
+              data-suffix="K+">0</span></span>
+          <p style="font-size:.9rem; margin-top:8px;">Hiring Partners</p>
+        </div>
+        <div class="achievement-card animate-on-scroll stagger-3">
+          <span class="achievement-num" style="color:var(--accent-dark);"><span data-target="20"
+              data-suffix="+">0</span></span>
+          <p style="font-size:.9rem; margin-top:8px;">Industry Verticals</p>
+        </div>
+        <div class="achievement-card animate-on-scroll stagger-4">
+          <span class="achievement-num" style="color:#7c3aed;"><span data-target="4" data-suffix="">0</span></span>
+          <p style="font-size:.9rem; margin-top:8px;">Industry Awards Won</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="background:var(--bg); padding:64px 0;">
+    <div class="container">
+      <div class="cta-banner animate-on-scroll">
+        <div class="content">
+          <h2>Join the TalentBridge Community</h2>
+          <p>Whether you're searching for your next career move or building a world-class team, we're here to help.</p>
+          <div class="btn-group">
+            <a href="login.html" class="btn btn-accent btn-lg"><i class="fas fa-user-plus"></i> Create Account</a>
+            <a href="contact.html" class="btn btn-white btn-lg">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo" style="margin-bottom:16px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <p>Connecting ambitious professionals with world-class opportunities since 2019. Your trusted partner in
+            career growth and talent acquisition.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>For Candidates</h5>
+          <ul>
+            <li><a href="404.html">Browse Jobs</a></li>
+            <li><a href="404.html">Job Categories</a></li>
+            <li><a href="404.html">Career Guidance</a></li>
+            <li><a href="404.html">Resume Tips</a></li>
+            <li><a href="404.html">Create Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Employers</h5>
+          <ul>
+            <li><a href="404.html">Post a Job</a></li>
+            <li><a href="404.html">Talent Search</a></li>
+            <li><a href="404.html">Recruitment Solutions</a></li>
+            <li><a href="404.html">Employer Brand</a></li>
+            <li><a href="404.html">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="services.html">Service</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TalentBridge. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

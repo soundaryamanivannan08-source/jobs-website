@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | TalentBridge</title>
+  <meta name="description"
+    content="The page you're looking for doesn't exist. Return to TalentBridge and find your next career opportunity." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Premium 404 Styles */
+    :root {
+      --bg-color: #030712;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    /* Dynamic Abstract Background */
+    .bg-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      filter: blur(80px);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .blob-1 {
+      top: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: linear-gradient(to right, #4f46e5, #3b82f6);
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 40vw;
+      height: 40vw;
+      background: linear-gradient(to right, #9333ea, #db2777);
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      top: 40%;
+      left: 50%;
+      width: 30vw;
+      height: 30vw;
+      background: linear-gradient(to right, #0ea5e9, #2dd4bf);
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+
+      33% {
+        transform: translate(5vw, 5vh) scale(1.1) rotate(10deg);
+      }
+
+      66% {
+        transform: translate(-5vw, 10vh) scale(0.9) rotate(-10deg);
+      }
+
+      100% {
+        transform: translate(0, -5vh) scale(1.2) rotate(5deg);
+      }
+    }
+
+    /* Glitch Grid Overlay */
+    .grid-overlay {
+      position: absolute;
+      inset: -50%;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: rotateX(60deg) translateY(0) translateZ(-200px);
+      animation: grid-scroll 10s linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes grid-scroll {
+      to {
+        transform: rotateX(60deg) translateY(40px) translateZ(-200px);
+      }
+    }
+
+    /* Content Container */
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 3rem;
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      animation: dropIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    @keyframes dropIn {
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Glitch 404 Text */
+    .glitch {
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 900;
+      line-height: 1;
+      margin: 0 0 1rem;
+      position: relative;
+      display: inline-block;
+      color: transparent;
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -4px;
+      text-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: #0ea5e9;
+      z-index: -1;
+      animation: glitch-anim-1 3s infinite linear alternate-reverse;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #0ea5e9;
+    }
+
+    .glitch::after {
+      color: #ec4899;
+      z-index: -2;
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #ec4899;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% {
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 2px);
+      }
+
+      20% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -2px);
+      }
+
+      40% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-2px, 2px);
+      }
+
+      60% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(2px, -2px);
+      }
+
+      80% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(-2px, 2px);
+      }
+
+      100% {
+        clip-path: inset(30% 0 50% 0);
+        transform: translate(2px, -2px);
+      }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -2px);
+      }
+
+      20% {
+        clip-path: inset(30% 0 20% 0);
+        transform: translate(-2px, 2px);
+      }
+
+      40% {
+        clip-path: inset(70% 0 10% 0);
+        transform: translate(2px, -2px);
+      }
+
+      60% {
+        clip-path: inset(20% 0 50% 0);
+        transform: translate(-2px, 2px);
+      }
+
+      80% {
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(2px, -2px);
+      }
+
+      100% {
+        clip-path: inset(5% 0 80% 0);
+        transform: translate(-2px, 2px);
+      }
+    }
+
+    /* Subtitle & Text */
+    .title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .highlight {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+      color: #fff;
+      box-shadow: 0 10px 20px -10px rgba(14, 165, 233, 0.5);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -10px rgba(14, 165, 233, 0.7);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Interactive floating element */
+    .cursor-glow {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 5;
+      transition: top 0.1s ease-out, left 0.1s ease-out;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        align-items: flex-start;
+        padding: 20px 0;
+      }
+      .content-wrapper {
+        padding: 1.75rem 1.25rem;
+        width: 92%;
+        margin: auto;
+      }
+      .glitch {
+        font-size: clamp(3.5rem, 20vw, 5.5rem);
+        letter-spacing: -2px;
+      }
+      .description {
+        font-size: .95rem;
+        margin-bottom: 1.5rem;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .cursor-glow { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Dynamic Background -->
+  <div class="bg-animation">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Main Content -->
+  <main class="content-wrapper" id="tiltingCard">
+    <div class="glitch" data-text="404">404</div>
+    <h1 class="title">System Malfunction</h1>
+    <p class="description">
+      The coordinates you entered don't exist in our servers. <br />
+      Route <span class="highlight">not found</span> or access restricted.
+    </p>
+
+    <div class="actions">
+      
+
+      <a href="index.html" class="btn btn-primary">
+        <i class="fas fa-satellite-dish"></i> <span>Return to Base</span>
+      </a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Advanced Interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      const card = document.getElementById('tiltingCard');
+      const glow = document.getElementById('cursorGlow');
+
+      // Follow cursor with the glow orb
+      document.addEventListener('mousemove', (e) => {
+        if (glow) {
+          glow.style.left = e.clientX + 'px';
+          glow.style.top = e.clientY + 'px';
+        }
+
+        // 3D Tilting effect on the card
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position within the element
+        const y = e.clientY - rect.top;  // y position within the element
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate tilt
+        const rotateX = ((y - centerY) / centerY) * -5; // Max 5 deg
+        const rotateY = ((x - centerX) / centerX) * 5;  // Max 5 deg
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      // Reset on mouse leave
+      document.addEventListener('mouseleave', () => {
+        if (card) {
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+          card.style.transition = 'transform 0.5s ease';
+        }
+      });
+
+      // Remove transition when moving to prevent lag
+      if (card) {
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'none';
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — TalentBridge</title>
+  <meta name="description"
+    content="Log in to your TalentBridge account to access job listings, track applications, and manage your recruitment activities." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 60%, #4f86f7 100%);
+      padding: calc(var(--navbar-height) + 24px) 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-page .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+
+    .login-page .blob-1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(79, 134, 247, .25);
+      top: -150px;
+      right: -100px;
+    }
+
+    .login-page .blob-2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(245, 158, 11, .15);
+      bottom: -100px;
+      left: -80px;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .login-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1000px;
+      margin: 0 auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .login-promo {
+      color: #fff;
+    }
+
+    .login-promo h2 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .login-promo p {
+      color: rgba(255, 255, 255, .8);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .login-promo-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .login-promo-feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .login-promo-feature .check {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255, 255, 255, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    .login-promo-feature span {
+      color: rgba(255, 255, 255, .9);
+      font-size: .95rem;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .2);
+    }
+
+    .role-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .role-card {
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .role-card:hover {
+      border-color: var(--primary);
+    }
+
+    .role-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .role-card i {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .role-card.selected i {
+      color: var(--primary);
+    }
+
+    .role-card span {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .role-card.selected span {
+      color: var(--primary);
+    }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: .85rem;
+      margin: 20px 0;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      border-top: 1px solid var(--border);
+    }
+
+    .social-login {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .social-btn {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--transition);
+      background: #fff;
+    }
+
+    .social-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+  <!-- LOGIN PAGE -->
+  <main class="login-page">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="login-wrapper">
+      <!-- PROMO SIDE -->
+      <div class="login-promo">
+        <span
+          style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#fff; padding:7px 16px; border-radius:100px; font-size:.82rem; font-weight:600; margin-bottom:24px;"><span
+            style="width:7px; height:7px; background:var(--accent); border-radius:50%;"></span> Trusted by 750,000+
+          users</span>
+        <h2>Welcome Back to <br />TalentBridge</h2>
+        <p>Access your personalized dashboard, manage applications, and stay on top of your career or hiring goals.</p>
+        <div class="login-promo-features">
+          <div class="login-promo-feature">
+            <div class="check"><i class="fas fa-check"></i></div>
+            <span>Browse 50,000+ live job openings</span>
+          </div>
+          <div class="login-promo-feature">
+            <div class="check"><i class="fas fa-check"></i></div>
+            <span>Track all your applications in one place</span>
+          </div>
+          <div class="login-promo-feature">
+            <div class="check"><i class="fas fa-check"></i></div>
+            <span>Get matched with jobs by AI in seconds</span>
+          </div>
+          <div class="login-promo-feature">
+            <div class="check"><i class="fas fa-check"></i></div>
+            <span>Connect with top recruiters directly</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; margin-top:36px;">
+          <div style="display:flex;">
+            <img src="assest/uifaces-popular-avatar (1) (1).webp"
+              style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;margin-right:-10px;"
+              alt="" />
+            <img src="assest/avatar2.webp"
+              style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;margin-right:-10px;"
+              alt="" />
+            <img src="assest/avatar3.webp"
+              style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;"
+              alt="" />
+          </div>
+          <p style="font-size:.85rem; color:rgba(255,255,255,.8); margin:0;">Join <strong
+              style="color:#fff;">750K+</strong> professionals who trust TalentBridge</p>
+        </div>
+      </div>
+
+      <!-- LOGIN FORM CARD -->
+      <div class="login-card" style="animation:fadeInUp .7s ease both;">
+        <div style="text-align:center; margin-bottom:28px;">
+          <a href="index.html" class="navbar-logo" style="justify-content:center; margin-bottom:20px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <h3 style="margin-bottom:6px;">Sign In to Your Account</h3>
+        </div>
+
+        <!-- ROLE SELECT CARDS -->
+        <p
+          style="font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:10px;">
+          Select Your Role</p>
+        <div class="role-cards">
+          <div class="role-card selected" id="roleUser" onclick="selectRole('user')">
+            <i class="fas fa-user"></i>
+            <span>Job Seeker</span>
+          </div>
+          <div class="role-card" id="roleAdmin" onclick="selectRole('admin')">
+            <i class="fas fa-user-shield"></i>
+            <span>Admin / HR</span>
+          </div>
+        </div>
+
+        <!-- SOCIAL LOGIN -->
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" novalidate>
+          <input type="hidden" id="role" name="role" value="user" />
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required
+              autocomplete="email" />
+            <span class="error-msg" data-error="email"><i class="fas fa-exclamation-circle"></i> Please enter a valid
+              email address.</span>
+          </div>
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <div class="password-toggle-wrap">
+              <input type="password" id="password" name="password" class="form-control"
+                placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="toggle-pw"><i class="fas fa-eye"></i></button>
+            </div>
+            <span class="error-msg" data-error="password"><i class="fas fa-exclamation-circle"></i> Password is
+              required.</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+            <label style="display:flex; align-items:center; gap:8px; font-size:.88rem; cursor:pointer;">
+              <input type="checkbox" style="accent-color:var(--primary);" /> Remember me
+            </label>
+            <a href="404.html" style="font-size:.88rem; color:var(--primary); font-weight:600;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary w-full btn-lg" style="justify-content:center;">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+          </button>
+          <p style="font-size:.88rem; color:var(--text-muted);margin-top: 20px;">Don't have an account? <a
+              href="404.html" style="color:var(--primary); font-weight:600;">Create one free</a></p>
+        </form>
+        <div style="text-align:center; margin-top:20px;">
+          <a href="index.html" class="btn btn-secondary btn-sm" style="width:100%; justify-content:center;"><i
+              class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    function selectRole(role) {
+      document.getElementById('role').value = role;
+      document.getElementById('roleUser').classList.toggle('selected', role === 'user');
+      document.getElementById('roleAdmin').classList.toggle('selected', role === 'admin');
+    }
+  </script>
+</body>
+
+</html>

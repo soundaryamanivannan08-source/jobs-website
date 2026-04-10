@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard — TalentBridge</title>
+  <meta name="description"
+    content="Manage your TalentBridge profile, track job applications, discover recommended jobs, and grow your career." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .dash-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .dash-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .app-status-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all var(--transition);
+    }
+
+    .app-status-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rec-job-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px;
+      transition: all var(--transition);
+    }
+
+    .rec-job-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .rec-job-card h5 {
+      font-size: .9rem;
+      margin-bottom: 4px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body class="dashboard-page">
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner" style="max-width: 100%;">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img" style="width: 100px;">
+      </a>
+
+      
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div
+            style="width:34px; height:34px; background:var(--success); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; font-weight:700;">
+            P</div>
+          <div style="font-size:.88rem;">
+            <div style="font-weight:600;">Priya</div>
+            <div
+              style="font-size:.75rem; color:var(--text-muted); max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"
+              class="user-email-display">user@talentbridge.in</div>
+          </div>
+        </div>
+
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      </div>
+  </nav>
+
+
+  <div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+
+        <nav class="sidebar-nav">
+          <div class="sidebar-section-label">My Career</div>
+          <a href="#overview" class="active"><i class="fas fa-tachometer-alt"></i> Overview</a>
+          <a href="#applied"><i class="fas fa-file-alt"></i> Applied Jobs <span class="sidebar-badge">8</span></a>
+          <a href="#recommended"><i class="fas fa-star"></i> Recommended</a>
+          <a href="#saved"><i class="fas fa-bookmark"></i> Saved Jobs</a>
+
+          <div class="sidebar-section-label">Profile</div>
+          <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+          <a href="#resume"><i class="fas fa-file-upload"></i> Resume</a>
+
+          <div class="sidebar-section-label">Activity</div>
+          <div class="sidebar-section-label">Account</div>
+          <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main" id="dashboardMain" style="margin-top: 60px;">
+      <!-- OVERVIEW TAB -->
+      <div id="overview" class="tab-pane active">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Welcome back</h2>
+            <p>Here's your career progress and latest activity on TalentBridge.</p>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="jobs.html" class="btn btn-secondary btn-sm"><i class="fas fa-search"></i> Find Jobs</a>
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i
+                class="fas fa-upload"></i> Update Resume</button>
+          </div>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="kpi-grid">
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info">
+              <strong data-target="8" data-suffix="">0</strong>
+              <span>Jobs Applied</span>
+              <div class="kpi-change up"><i class="fas fa-arrow-up"></i> +3 this week</div>
+            </div>
+            <div class="kpi-icon" style="background:#dbeafe;color:#1d4ed8;"><i class="fas fa-paper-plane"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info">
+              <strong data-target="3" data-suffix="">0</strong>
+              <span>Interviews Scheduled</span>
+              <div class="kpi-change up"><i class="fas fa-calendar-check"></i> Next: Apr 10</div>
+            </div>
+            <div class="kpi-icon" style="background:#d1fae5;color:#059669;"><i class="fas fa-calendar-check"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info">
+              <strong data-target="12" data-suffix="">0</strong>
+              <span>Saved Jobs</span>
+              <div class="kpi-change" style="color:var(--text-muted);"><i class="fas fa-bookmark"></i> 4 expire soon
+              </div>
+            </div>
+            <div class="kpi-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-bookmark"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info">
+              <strong data-target="75" data-suffix="%">0</strong>
+              <span>Profile Complete</span>
+              <div class="kpi-change" style="color:var(--primary);"><i class="fas fa-arrow-up"></i> +5% — add skills
+              </div>
+            </div>
+            <div class="kpi-icon" style="background:#ede9fe;color:#5b21b6;"><i class="fas fa-user-check"></i></div>
+          </div>
+        </div>
+        
+        <!-- NEW CONTENT: Trending Jobs -->
+        <div class="dashboard-section animate-on-scroll" style="margin-top: 32px;">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-fire" style="color:var(--danger);"></i> Trending Jobs in Your Field</h3>
+            <a href="jobs.html" class="btn btn-secondary btn-sm">View More</a>
+          </div>
+          <div class="dash-grid-2">
+            <div class="app-status-card">
+              <div>
+                <div style="font-weight:600;font-size:.9rem;">Lead Full Stack Developer</div>
+                <div style="font-size:.78rem;color:var(--text-muted);">InnovateTech · Bangalore</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="badge badge-amber" style="font-size:.75rem;"><i class="fas fa-arrow-trend-up"></i> Hot</span>
+                <a href="jobs.html" class="btn btn-primary btn-sm">Apply</a>
+              </div>
+            </div>
+            <div class="app-status-card">
+              <div>
+                <div style="font-weight:600;font-size:.9rem;">Cloud Architect (AWS)</div>
+                <div style="font-size:.78rem;color:var(--text-muted);">GlobalSystems · Remote</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="badge badge-amber" style="font-size:.75rem;"><i class="fas fa-bolt"></i> Urgent</span>
+                <a href="jobs.html" class="btn btn-primary btn-sm">Apply</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE TAB -->
+      <div id="profile" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>My Profile</h2>
+            <p>Manage your professional identity and public profile.</p>
+          </div>
+        </div>
+        <div class="dash-grid-2" style="margin-bottom:24px;">
+          <div class="profile-card animate-on-scroll">
+            <div class="profile-cover"></div>
+            <div class="profile-body">
+              <div class="profile-avatar-wrap">
+                <div class="profile-avatar">P</div>
+              </div>
+              <div class="profile-name">Priya Sharma</div>
+              <div class="profile-role">Senior Software Engineer · Bangalore, India</div>
+              <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:8px;">
+                <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span
+                  class="skill-tag">Node.js</span><span class="skill-tag">AWS</span><span
+                  class="skill-tag">GraphQL</span>
+              </div>
+              <div class="profile-stats">
+                <div class="profile-stat"><strong>8</strong><span>Applied</span></div>
+                <div class="profile-stat"><strong>3</strong><span>Interviews</span></div>
+                <div class="profile-stat"><strong>75%</strong><span>Profile</span></div>
+              </div>
+              <button class="btn btn-primary w-full" style="justify-content:center; margin-top:16px;"
+                onclick="window.location.href='404.html'"><i class="fas fa-edit"></i> Edit
+                Profile</button>
+            </div>
+          </div>
+
+          <!-- NEW CONTENT: Extracurricular/Experience -->
+          <div class="profile-card animate-on-scroll" style="text-align:left; padding: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <h3 style="font-size: 1.1rem; margin:0;"><i class="fas fa-briefcase" style="color:var(--primary);"></i> Experience</h3>
+              <a href="404.html" style="color:var(--primary); font-size:.85rem; font-weight:600;"><i class="fas fa-plus"></i> Add</a>
+            </div>
+            
+            <div class="timeline" style="margin-top:0;">
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--primary);"></div>
+                <div class="timeline-content">
+                  <strong style="display:block;">Senior Software Engineer</strong>
+                  <span style="font-size:.82rem; color:var(--text-muted);">Zomato · Full-time</span>
+                  <p style="font-size:.8rem; margin-top:4px;">Jan 2023 - Present · 1 yr 4 mos</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong style="display:block;">Software Engineer II</strong>
+                  <span style="font-size:.82rem; color:var(--text-muted);">Paytm · Full-time</span>
+                  <p style="font-size:.8rem; margin-top:4px;">Mar 2020 - Dec 2022 · 2 yrs 10 mos</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; margin-top: 24px;">
+              <h3 style="font-size: 1.1rem; margin:0;"><i class="fas fa-graduation-cap" style="color:var(--secondary);"></i> Education</h3>
+              <a href="404.html" style="color:var(--primary); font-size:.85rem; font-weight:600;"><i class="fas fa-plus"></i> Add</a>
+            </div>
+            
+            <div class="timeline" style="margin-top:0;">
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:var(--secondary);"></div>
+                <div class="timeline-content">
+                  <strong style="display:block;">B.Tech in Computer Science</strong>
+                  <span style="font-size:.82rem; color:var(--text-muted);">Delhi Technological University</span>
+                  <p style="font-size:.8rem; margin-top:4px;">2016 - 2020</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUME TAB -->
+      <div id="resume" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Resume & Documents</h2>
+            <p>Manage your professional resume and job search documents.</p>
+          </div>
+        </div>
+        <div class="dashboard-section animate-on-scroll">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-tasks" style="color:var(--primary);"></i> Profile Completion</h3>
+            <span class="badge badge-amber">75% Complete</span>
+          </div>
+          <div style="margin-bottom:20px;">
+            <div class="progress-bar" style="height:10px; border-radius:100px;">
+              <div class="progress-fill" data-width="75%" style="border-radius:100px;"></div>
+            </div>
+            <p style="font-size:.82rem; margin-top:8px; color:var(--text-muted);">Complete your profile to get 3x more
+              recruiter visibility.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div
+              style="display:flex; align-items:center; gap:12px; padding:12px; background:#d1fae5; border-radius:var(--radius); border:1px solid #6ee7b7;">
+              <i class="fas fa-check-circle" style="color:var(--success);"></i>
+              <span style="font-size:.88rem; flex:1;">Basic profile info added</span>
+              <span class="badge badge-green">Done</span>
+            </div>
+            <div
+              style="display:flex; align-items:center; gap:12px; padding:12px; background:#d1fae5; border-radius:var(--radius); border:1px solid #6ee7b7;">
+              <i class="fas fa-check-circle" style="color:var(--success);"></i>
+              <span style="font-size:.88rem; flex:1;">Work experience added</span>
+              <span class="badge badge-green">Done</span>
+            </div>
+            <div
+              style="display:flex; align-items:center; gap:12px; padding:12px; background:var(--primary-light); border-radius:var(--radius); border:1px solid rgba(26,86,219,.2); cursor:pointer;"
+              onclick="window.location.href='404.html'">
+              <i class="fas fa-upload" style="color:var(--primary);"></i>
+              <span style="font-size:.88rem; flex:1; color:var(--primary); font-weight:500;">Upload your latest
+                resume</span>
+              <span class="badge badge-blue">Pending</span>
+            </div>
+            <div
+              style="display:flex; align-items:center; gap:12px; padding:12px; background:var(--primary-light); border-radius:var(--radius); border:1px solid rgba(26,86,219,.2); cursor:pointer;"
+              onclick="window.location.href='404.html'">
+              <i class="fas fa-tools" style="color:var(--primary);"></i>
+              <span style="font-size:.88rem; flex:1; color:var(--primary); font-weight:500;">Add 5 more skills to your
+                profile</span>
+              <span class="badge badge-blue">Pending</span>
+            </div>
+            <div
+              style="display:flex; align-items:center; gap:12px; padding:12px; background:var(--bg); border-radius:var(--radius); border:1px solid var(--border); cursor:pointer;"
+              onclick="window.location.href='404.html'">
+              <i class="fas fa-graduation-cap" style="color:var(--text-muted);"></i>
+              <span style="font-size:.88rem; flex:1;">Add education history</span>
+              <span class="badge badge-gray">Optional</span>
+            </div>
+          </div>
+
+          <!-- RESUME STATUS -->
+          <div id="resume"
+            style="margin-top:20px; background:var(--bg); border-radius:var(--radius); padding:16px; border:2px dashed var(--border);">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div
+                style="width:44px; height:44px; background:#fef3c7; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:var(--accent-dark);">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div style="flex:1;">
+                <div style="font-weight:600; font-size:.9rem;">Priya_Sharma_Resume_2025.pdf</div>
+                <div style="font-size:.78rem; color:var(--text-muted);">Last updated: Mar 20, 2025 · 284 KB</div>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'"><i
+                    class="fas fa-download"></i></button>
+                <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i
+                    class="fas fa-sync-alt"></i> Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPLIED TAB -->
+      <div id="applied" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>My Applications</h2>
+            <p>Track and manage your career applications.</p>
+          </div>
+        </div>
+        <div class="dashboard-section animate-on-scroll">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-paper-plane" style="color:var(--primary);"></i> Applied Jobs</h3>
+            <div style="display:flex; gap:8px;">
+              <select class="sort-select" style="font-size:.82rem; padding:6px 10px;">
+                <option>All Status</option>
+                <option>Pending</option>
+                <option>Reviewed</option>
+                <option>Interview</option>
+                <option>Offer</option>
+              </select>
+            </div>
+          </div>
+          <div class="data-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Role / Company</th>
+                  <th>Location</th>
+                  <th>Applied</th>
+                  <th>Status</th>
+                  <th>Next Step</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:.9rem;">Sr. Frontend Developer</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);">TechCorp India</div>
+                  </td>
+                  <td style="font-size:.85rem;">Bangalore</td>
+                  <td style="font-size:.82rem;color:var(--text-muted);">Apr 5</td>
+                  <td><span class="badge badge-green">Interview</span></td>
+                  <td style="font-size:.85rem;font-weight:600;color:var(--primary)">Round 2 · Apr 10</td>
+                  <td><button class="btn btn-primary btn-sm"
+                      onclick="window.location.href='404.html'">Details</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:.9rem;">React Developer</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);">Nexus Ventures</div>
+                  </td>
+                  <td style="font-size:.85rem;">Mumbai</td>
+                  <td style="font-size:.82rem;color:var(--text-muted);">Apr 3</td>
+                  <td><span class="badge badge-blue">Reviewed</span></td>
+                  <td style="font-size:.85rem;color:var(--text-muted);">Awaiting feedback</td>
+                  <td><button class="btn btn-secondary btn-sm"
+                      onclick="window.location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:.9rem;">Full Stack Engineer</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);">CloudSystems</div>
+                  </td>
+                  <td style="font-size:.85rem;">Remote</td>
+                  <td style="font-size:.82rem;color:var(--text-muted);">Mar 28</td>
+                  <td><span class="badge badge-amber">Pending</span></td>
+                  <td style="font-size:.85rem;color:var(--text-muted);">Under review</td>
+                  <td><button class="btn btn-secondary btn-sm"
+                      onclick="window.location.href='404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:.9rem;">Node.js Developer</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);">AI Dynamics</div>
+                  </td>
+                  <td style="font-size:.85rem;">Hyderabad</td>
+                  <td style="font-size:.82rem;color:var(--text-muted);">Mar 22</td>
+                  <td><span class="badge badge-green">Offer</span></td>
+                  <td style="font-size:.85rem;font-weight:600;color:var(--success);">₹24L · Decide by Apr 12</td>
+                  <td><button class="btn btn-accent btn-sm" onclick="window.location.href='404.html'">View
+                      Offer</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="font-weight:600;font-size:.9rem;">Software Engineer II</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);">Zoho Corp</div>
+                  </td>
+                  <td style="font-size:.85rem;">Chennai</td>
+                  <td style="font-size:.82rem;color:var(--text-muted);">Mar 15</td>
+                  <td><span class="badge badge-red">Rejected</span></td>
+                  <td style="font-size:.85rem;color:var(--text-muted);">—</td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Similar
+                      Jobs</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOMMENDED TAB -->
+      <div id="recommended" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Recommended for You</h2>
+            <p>Matches based on your skills.</p>
+          </div>
+        </div>
+        <div class="dashboard-section animate-on-scroll">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-star" style="color:var(--accent);"></i> Recommended for You</h3>
+            <a href="jobs.html" class="btn btn-secondary btn-sm">Browse All Jobs</a>
+          </div>
+          <div class="dash-grid-3">
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  💻</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Frontend Developer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Razorpay</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">97% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">React</span><span class="badge badge-blue">TS</span><span
+                  class="badge badge-gray">Remote</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹20L–₹32L</span><a href="login.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#d1fae5;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  🚀</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Sr. React Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Groww</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">94% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">React</span><span class="badge badge-blue">Redux</span><span
+                  class="badge badge-gray">Hybrid</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹18L–₹28L</span><a href="login.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#ede9fe;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  🎯</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Tech Lead — Frontend</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">CRED</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">91% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">React</span><span class="badge badge-blue">Node</span><span
+                  class="badge badge-gray">Bangalore</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹28L–₹45L</span><a href="jobs.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+            <!-- Additional Recommended Jobs -->
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#ffedd5;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  ☁️</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Cloud Infrastructure Eng.</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Amazon AWS</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">88% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">AWS</span><span class="badge badge-blue">Terraform</span><span
+                  class="badge badge-gray">Remote</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹25L–₹40L</span><a href="jobs.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+            
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#e0f2fe;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  📱</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">React Native Developer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Swiggy</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">85% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">React Native</span><span class="badge badge-blue">iOS</span><span
+                  class="badge badge-gray">Bangalore</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹18L–₹30L</span><a href="jobs.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+            
+            <div class="rec-job-card">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <div
+                  style="width:40px;height:40px;border-radius:10px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  🤖</div>
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">AI/Prompt Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">OpenAI India</div>
+                </div>
+                <span class="badge badge-green" style="margin-left:auto;">82% Match</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"><span
+                  class="badge badge-blue">Python</span><span class="badge badge-blue">LLMs</span><span
+                  class="badge badge-gray">Remote</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span
+                  style="font-weight:700;color:var(--primary);font-size:.9rem;">₹35L–₹50L</span><a href="jobs.html"
+                  class="btn btn-primary btn-sm">Apply</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAVED TAB -->
+      <div id="saved" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Saved Jobs</h2>
+            <p>Jobs you've marked to apply for later.</p>
+          </div>
+        </div>
+        <div class="dash-grid-2">
+          <div class="dashboard-section animate-on-scroll">
+            <div class="dashboard-section-header">
+              <h3><i class="fas fa-bookmark" style="color:var(--primary);"></i> Saved Jobs</h3>
+              <span class="badge badge-blue">12 saved</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Sr. UX Designer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">DesignStudio Co. · Remote</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><span
+                    style="font-size:.82rem;font-weight:700;color:var(--primary);">₹15L</span><a href="login.html"
+                    class="btn btn-primary btn-sm">Apply</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">DevOps Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">CloudSystems · Hyderabad</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><span
+                    style="font-size:.82rem;font-weight:700;color:var(--primary);">₹22L</span><a href="login.html"
+                    class="btn btn-primary btn-sm">Apply</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Engineering Manager</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Flipkart · Bangalore</div><span
+                    class="badge badge-amber" style="margin-top:4px;font-size:.72rem;">Expires in 3 days</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><a href="login.html"
+                    class="btn btn-accent btn-sm">Apply Now</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Backend Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">PhonePe · Remote</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><span
+                    style="font-size:.82rem;font-weight:700;color:var(--primary);">₹25L</span><a href="jobs.html"
+                    class="btn btn-primary btn-sm">Apply</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              
+              <!-- Additional Saved Jobs -->
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Lead iOS Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Zerodha · Bangalore</div><span
+                    class="badge badge-amber" style="margin-top:4px;font-size:.72rem;">Expires in 1 day</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><a href="jobs.html"
+                    class="btn btn-accent btn-sm">Apply Now</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Python Data Engineer</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">Fractal Analytics · Mumbai</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><span
+                    style="font-size:.82rem;font-weight:700;color:var(--primary);">₹18L</span><a href="jobs.html"
+                    class="btn btn-primary btn-sm">Apply</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+              
+              <div class="app-status-card">
+                <div>
+                  <div style="font-weight:600;font-size:.9rem;">Security Analyst</div>
+                  <div style="font-size:.78rem;color:var(--text-muted);">TCS · Chennai</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;"><span
+                    style="font-size:.82rem;font-weight:700;color:var(--primary);">₹14L</span><a href="jobs.html"
+                    class="btn btn-primary btn-sm">Apply</a><button
+                    style="background:none;border:none;color:var(--danger);cursor:pointer;"
+                    onclick="window.location.href='404.html'"><i class="fas fa-trash"></i></button></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS TAB -->
+      <div id="notifications" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Notifications</h2>
+            <p>Stay updated with interviews, offers, and alerts.</p>
+          </div>
+        </div>
+        <div class="dashboard-section animate-on-scroll">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-bell" style="color:var(--primary);"></i> Notifications</h3>
+            <button class="btn btn-secondary btn-sm"
+              onclick="window.location.href='404.html'">Mark
+              All Read</button>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap green"><i class="fas fa-trophy"></i></div>
+            <div class="notif-content"><strong>You've received an offer!</strong>
+              <p>Node.js Developer role at AI Dynamics — ₹24L/year. Respond by Apr 12.</p><span class="notif-time"><i
+                  class="far fa-clock"></i> 2 hours ago</span>
+            </div>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap"><i class="fas fa-calendar-check"></i></div>
+            <div class="notif-content"><strong>Interview confirmed</strong>
+              <p>Round 2 with TechCorp India on April 10 at 11:00 AM IST.</p><span class="notif-time"><i
+                  class="far fa-clock"></i> Yesterday</span>
+            </div>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap amber"><i class="fas fa-fire"></i></div>
+            <div class="notif-content"><strong>Your saved job is expiring</strong>
+              <p>Engineering Manager at Flipkart closes in 3 days — apply now!</p><span class="notif-time"><i
+                  class="far fa-clock"></i> 2 days ago</span>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon-wrap"><i class="fas fa-star"></i></div>
+            <div class="notif-content"><strong>3 new job matches found</strong>
+              <p>Your profile matched 3 new jobs from top companies.</p><span class="notif-time"><i
+                  class="far fa-clock"></i> 3 days ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVITY TAB -->
+      <div id="activity" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Recent Activity</h2>
+            <p>Your journey on TalentBridge.</p>
+          </div>
+        </div>
+        <div class="dashboard-section animate-on-scroll">
+          <div class="dashboard-section-header">
+            <h3><i class="fas fa-history" style="color:var(--primary);"></i> Recent Activity</h3>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-content"><strong>Offer received from AI Dynamics</strong>
+                <p>Node.js Developer · ₹24L/year · Respond by Apr 12</p>
+                <p class="notif-time">Today, 11:30 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>Applied to Sr. Frontend Developer</strong>
+                <p>TechCorp India · Bangalore</p>
+                <p class="notif-time">Apr 5, 2025</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>Applied to React Developer</strong>
+                <p>Nexus Ventures · Mumbai</p>
+                <p class="notif-time">Apr 3, 2025</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot amber"></div>
+              <div class="timeline-content"><strong>Profile viewed by 5 recruiters</strong>
+                <p>Including TechCorp, Razorpay, and CRED</p>
+                <p class="notif-time">Apr 2, 2025</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-content"><strong>Resume updated</strong>
+                <p>Priya_Sharma_Resume_2025.pdf uploaded</p>
+                <p class="notif-time">Mar 20, 2025</p>
+              </div>
+            </div>
+            
+            <!-- Additional Activity Items -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>Applied to Software Engineer II</strong>
+                <p>Zoho Corp · Chennai</p>
+                <p class="notif-time">Mar 15, 2025</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot amber"></div>
+              <div class="timeline-content"><strong>Profile Indexed by Search</strong>
+                <p>Your profile is now visible to top tech recruiters in Bangalore.</p>
+                <p class="notif-time">Mar 10, 2025</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-content"><strong>Account Created</strong>
+                <p>Welcome to TalentBridge! You successfully joined our platform.</p>
+                <p class="notif-time">Mar 1, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS TAB -->
+      <div id="skills" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Skills &amp; Expertise</h2>
+            <p>Update your technical and soft skills to improve matching.</p>
+          </div>
+        </div>
+        <div class="card" style="padding:30px;">
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;">
+            <span class="skill-tag">React <i class="fas fa-times"></i></span>
+            <span class="skill-tag">TypeScript <i class="fas fa-times"></i></span>
+            <span class="skill-tag">Node.js <i class="fas fa-times"></i></span>
+            <span class="skill-tag">AWS <i class="fas fa-times"></i></span>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <input type="text" class="form-control" placeholder="Add a skill (e.g. Python)" style="max-width:300px;">
+            <button class="btn btn-primary" onclick="window.location.href='404.html'">Add Skill</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div id="settings" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Account Settings</h2>
+            <p>Manage your account preferences and security.</p>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <div class="card" style="max-width:600px;">
+            <h3 style="margin-bottom:16px; font-size:1.1rem;"><i class="fas fa-user-cog" style="color:var(--primary);"></i> General Preferences</h3>
+            <form onsubmit="event.preventDefault(); window.location.href='404.html'">
+              <div class="form-group"><label>Full Name</label><input type="text" class="form-control"
+                  value="Priya Sharma" />
+              </div>
+              <div class="form-group"><label>Email Alert Frequency</label><select class="form-control">
+                  <option>Instant</option>
+                  <option>Daily Digest</option>
+                  <option>Weekly</option>
+                </select></div>
+              <button class="btn btn-primary" type="submit">Update Preferences</button>
+            </form>
+          </div>
+          
+          <div class="card" style="max-width:600px;">
+            <h3 style="margin-bottom:16px; font-size:1.1rem;"><i class="fas fa-shield-alt" style="color:var(--success);"></i> Privacy & Security</h3>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <label style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+                <span style="font-size:.9rem; font-weight:500;">Two-Factor Authentication (2FA)</span>
+                <input type="checkbox" checked style="accent-color:var(--primary); width:18px; height:18px;">
+              </label>
+              <label style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+                <span style="font-size:.9rem; font-weight:500;">Make Profile Public to Recruiters</span>
+                <input type="checkbox" checked style="accent-color:var(--primary); width:18px; height:18px;">
+              </label>
+              <hr style="border:none; border-top:1px solid var(--border); margin:4px 0;">
+              <div>
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Change Password</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card" style="max-width:600px; border:1px solid #fecaca; background:#fef2f2;">
+            <h3 style="margin-bottom:12px; font-size:1.1rem; color:var(--danger);"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+            <p style="font-size:.85rem; color:var(--text-muted); margin-bottom:16px;">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="btn btn-sm" style="background:var(--danger); color:#fff; border:none;" onclick="window.location.href='index.html'">Delete Account</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

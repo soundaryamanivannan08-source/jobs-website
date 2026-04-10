@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobs &amp; Blog — TalentBridge</title>
+  <meta name="description"
+    content="Browse thousands of job openings and read the latest hiring trends, career tips, and industry insights on the TalentBridge blog." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .jobs-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .filter-sidebar {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px;
+      position: sticky;
+      top: calc(var(--navbar-height) + 20px);
+    }
+
+    .filter-sidebar h4 {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-group {
+      margin-bottom: 20px;
+    }
+
+    .filter-group label {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .filter-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: .88rem;
+      color: var(--text);
+    }
+
+    .filter-check input {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .filter-range input[type=range] {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .jobs-count {
+      font-size: .88rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sort-select {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: .85rem;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .job-list-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: all var(--transition);
+    }
+
+    .job-list-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+
+    .job-list-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .job-list-body {
+      flex: 1;
+    }
+
+    .job-list-body h4 {
+      margin-bottom: 4px;
+    }
+
+    .job-list-body .company {
+      font-size: .88rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .job-list-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .job-list-actions .salary {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    .save-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .save-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-btn:hover,
+    .page-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .trending-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .newsletter-strip {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: var(--radius-lg);
+      padding: 48px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-strip h3 {
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .newsletter-strip p {
+      color: rgba(255, 255, 255, .8);
+      font-size: .9rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      min-width: 320px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 13px 18px;
+      border-radius: var(--radius);
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: .95rem;
+    }
+
+    .mobile-filter-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 11px 18px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+
+    .filter-close-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: .9rem;
+      cursor: pointer;
+      margin-bottom: 16px;
+      padding: 4px 0;
+    }
+
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      z-index: 799;
+    }
+
+    .filter-overlay.open {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+      </a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+          href="jobs.html" class="active">Jobs</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+      href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+    <div class="mobile-actions"><a href="login.html" class="btn btn-secondary">Login</a></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero"
+    style="background:linear-gradient(135deg,rgba(27, 27, 27, 0.075) 0%,rgba(49, 53, 63, 0.8) 100%),url('assest/hero_jobs.webp') center/cover no-repeat;">
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="section-label"
+        style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);margin-bottom:16px;"><i
+          class="fas fa-briefcase"></i> Jobs &amp; Blog</span>
+      <h1>Find Your Next <br />Career-Defining Role</h1>
+      <p>Browse 50,000+ jobs from top companies. Filter by location, salary, and work type to find your perfect match.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS QUICK -->
+  <div style="background:#fff; padding:20px 0; border-bottom:1px solid var(--border);">
+    <div class="container" style="display:flex; gap:32px; align-items:center; flex-wrap:wrap; justify-content:center;">
+      <div style="display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--text-muted);"><i
+          class="fas fa-briefcase" style="color:var(--primary);"></i> <strong style="color:var(--text);">50,240</strong>
+        Active Jobs</div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--text-muted);"><i
+          class="fas fa-building" style="color:var(--primary);"></i> <strong style="color:var(--text);">12,400</strong>
+        Companies</div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--text-muted);"><i
+          class="fas fa-map-marker-alt" style="color:var(--primary);"></i> <strong
+          style="color:var(--text);">180+</strong> Cities</div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--text-muted);"><i
+          class="fas fa-plus-circle" style="color:var(--success);"></i> <strong
+          style="color:var(--success);">2,400</strong> Added Today</div>
+    </div>
+  </div>
+
+  <!-- JOBS + FILTER LAYOUT -->
+  <div class="filter-overlay" id="filterOverlay" onclick="closeFilter()"></div>
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <button class="mobile-filter-btn" id="mobileFilterBtn" onclick="openFilter()"><i class="fas fa-sliders-h"></i>
+        Filter Jobs</button>
+      <div class="jobs-layout">
+
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <button class="filter-close-btn" id="filterCloseBtn" onclick="closeFilter()"><i class="fas fa-times"></i>
+            Close Filters</button>
+          <h4><i class="fas fa-filter" style="color:var(--primary);"></i> Filter Jobs</h4>
+          <div class="filter-group">
+            <label>Job Type</label>
+            <label class="filter-check"><input type="checkbox" checked /> Full-Time <span class="badge badge-blue"
+                style="margin-left:auto;">28K</span></label>
+            <label class="filter-check"><input type="checkbox" /> Part-Time <span class="badge badge-gray"
+                style="margin-left:auto;">4.2K</span></label>
+            <label class="filter-check"><input type="checkbox" /> Contract <span class="badge badge-gray"
+                style="margin-left:auto;">8.1K</span></label>
+            <label class="filter-check"><input type="checkbox" /> Internship <span class="badge badge-gray"
+                style="margin-left:auto;">6.5K</span></label>
+            <label class="filter-check"><input type="checkbox" /> Freelance <span class="badge badge-gray"
+                style="margin-left:auto;">3.3K</span></label>
+          </div>
+          <div class="filter-group">
+            <label>Work Mode</label>
+            <label class="filter-check"><input type="checkbox" checked /> On-site</label>
+            <label class="filter-check"><input type="checkbox" checked /> Remote</label>
+            <label class="filter-check"><input type="checkbox" /> Hybrid</label>
+          </div>
+          <div class="filter-group">
+            <label>Experience Level</label>
+            <label class="filter-check"><input type="checkbox" /> Entry Level (0–2 yrs)</label>
+            <label class="filter-check"><input type="checkbox" checked /> Mid-Level (3–6 yrs)</label>
+            <label class="filter-check"><input type="checkbox" /> Senior (7+ yrs)</label>
+            <label class="filter-check"><input type="checkbox" /> Executive</label>
+          </div>
+          <div class="filter-group filter-range">
+            <label>Salary Range: <strong id="salaryLabel">₹5L – ₹50L</strong></label>
+            <input type="range" min="5" max="100" value="50"
+              oninput="document.getElementById('salaryLabel').textContent='₹5L – ₹'+this.value+'L'" />
+          </div>
+          <div class="filter-group">
+            <label>Industry</label>
+            <label class="filter-check"><input type="checkbox" checked /> Technology</label>
+            <label class="filter-check"><input type="checkbox" /> Finance</label>
+            <label class="filter-check"><input type="checkbox" /> Healthcare</label>
+            <label class="filter-check"><input type="checkbox" /> Marketing</label>
+            <label class="filter-check"><input type="checkbox" /> Design</label>
+            <label class="filter-check"><input type="checkbox" /> Education</label>
+          </div>
+          <a href="404.html"><button class="btn btn-primary w-full" style="justify-content:center;" onclick="filterJobs()"><i
+              class="fas fa-search"></i> Apply Filters</button></a>
+          <a href="404.html"><button class="btn btn-secondary w-full" style="justify-content:center; margin-top:8px;" onclick="window.location.href='404.html'">Clear All</button></a>
+        </aside>
+
+        <!-- JOB LISTINGS -->
+        <div>
+          <div class="jobs-count animate-on-scroll">
+            <span>Showing <strong>50,240</strong> jobs for <strong>"All Jobs"</strong></span>
+            <select class="sort-select">
+              <option>Sort: Most Relevant</option>
+              <option>Sort: Newest First</option>
+              <option>Sort: Highest Salary</option>
+              <option>Sort: Most Applied</option>
+            </select>
+          </div>
+          <div class="jobs-list" id="jobsList">
+            <!-- Job 1 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-laptop-code"></i>
+              </div>
+              <div class="job-list-body">
+                <h4>Senior Frontend Developer</h4>
+                <p class="company"><i class="fas fa-building"></i> TechCorp India &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Bangalore &nbsp;·&nbsp; <i class="fas fa-clock"></i> 2 days ago
+                </p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> Hybrid</span><span><i class="fas fa-star"></i> 4.8
+                    Rating</span><span><i class="fas fa-users"></i> 45 Applied</span></div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">React</span><span
+                    class="badge badge-blue">TypeScript</span><span class="badge badge-blue">Node.js</span><span
+                    class="badge badge-green">Urgently Hiring</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹18L–₹28L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+            <!-- Job 2 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#d1fae5; color:#059669;"><i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="job-list-body">
+                <h4>Data Scientist — NLP &amp; ML</h4>
+                <p class="company"><i class="fas fa-building"></i> AI Dynamics &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Remote &nbsp;·&nbsp; <i class="fas fa-clock"></i> Today</p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> Remote</span><span><i class="fas fa-users"></i> 120
+                    Applied</span></div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">Python</span><span
+                    class="badge badge-blue">PyTorch</span><span class="badge badge-blue">NLP</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹20L–₹40L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+            <!-- Job 3 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#fef3c7; color:#d97706;"><i class="fas fa-bullseye"></i>
+              </div>
+              <div class="job-list-body">
+                <h4>Product Manager — Growth</h4>
+                <p class="company"><i class="fas fa-building"></i> Nexus Ventures &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Mumbai &nbsp;·&nbsp; <i class="fas fa-clock"></i> 1 day ago</p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> On-site</span><span><i class="fas fa-users"></i> 78
+                    Applied</span></div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">Agile</span><span
+                    class="badge badge-blue">B2B SaaS</span><span class="badge badge-amber">Featured</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹22L–₹35L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+            <!-- Job 4 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#ede9fe; color:#7c3aed;"><i class="fas fa-paint-brush"></i>
+              </div>
+              <div class="job-list-body">
+                <h4>Senior UX/UI Designer</h4>
+                <p class="company"><i class="fas fa-building"></i> DesignStudio Co. &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Remote &nbsp;·&nbsp; <i class="fas fa-clock"></i> 3 hrs ago</p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> Remote</span><span><i class="fas fa-users"></i> 31 Applied</span>
+                </div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">Figma</span><span
+                    class="badge badge-blue">UX Research</span><span class="badge badge-green">New</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹12L–₹22L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+            <!-- Job 5 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#e0f2fe; color:#0ea5e9;"><i class="fas fa-cloud"></i></div>
+              <div class="job-list-body">
+                <h4>DevOps / Cloud Engineer</h4>
+                <p class="company"><i class="fas fa-building"></i> CloudSystems Inc. &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Hyderabad &nbsp;·&nbsp; <i class="fas fa-clock"></i> 4 days ago
+                </p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> Hybrid</span><span><i class="fas fa-users"></i> 89 Applied</span>
+                </div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">AWS</span><span
+                    class="badge badge-blue">Kubernetes</span><span class="badge badge-blue">Terraform</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹16L–₹32L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+            <!-- Job 6 -->
+            <div class="job-list-card animate-on-scroll">
+              <div class="job-list-logo" style="background:#fee2e2; color:#dc2626;"><i class="fas fa-coins"></i></div>
+              <div class="job-list-body">
+                <h4>Financial Analyst — Investment Banking</h4>
+                <p class="company"><i class="fas fa-building"></i> Prime Capital &nbsp;·&nbsp; <i
+                    class="fas fa-map-marker-alt"></i> Delhi &nbsp;·&nbsp; <i class="fas fa-clock"></i> 5 days ago</p>
+                <div class="job-meta"><span><i class="fas fa-briefcase"></i> Full-Time</span><span><i
+                      class="fas fa-laptop-house"></i> On-site</span><span><i class="fas fa-users"></i> 57
+                    Applied</span></div>
+                <div class="job-tags" style="margin-top:10px;"><span class="badge badge-blue">Excel</span><span
+                    class="badge badge-blue">SAP</span><span class="badge badge-blue">CFA Preferred</span></div>
+              </div>
+              <div class="job-list-actions">
+                <span class="salary">₹25L–₹60L</span>
+                <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+                <button class="save-btn" onclick="window.location.href='404.html'"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGINATION -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BLOG / CAREER TIPS -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-newspaper"></i> Blog</span>
+        <h2>Latest Hiring Trends <span class="text-primary">&amp; Career Tips</span></h2>
+        <p>Stay ahead with expert insights, industry analysis, and actionable career advice from our recruitment
+          specialists.</p>
+      </div>
+      <div class="grid-3" style="gap:28px;">
+        <div class="blog-card animate-on-scroll stagger-1">
+          <div style="overflow:hidden;"><img src="assest/jobs1.webp" alt="Career tips" /></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span><i class="fas fa-tag"></i> Career Tips</span><span><i
+                  class="far fa-calendar"></i> Apr 7, 2025</span><span><i class="far fa-clock"></i> 5 min read</span>
+            </div>
+            <h4><a href="404.html">How to Get Hired at a Top Tech Company in 2025</a></h4>
+            <p style="font-size:.88rem;">From resume optimization to cracking system design interviews — our complete
+              guide to landing your dream tech role this year.</p>
+            <a href="404.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card animate-on-scroll stagger-2">
+          <div style="overflow:hidden;"><img src="assest/jobs2.webp" alt="Salary negotiation" /></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span><i class="fas fa-tag"></i> Salary</span><span><i
+                  class="far fa-calendar"></i> Apr 5, 2025</span><span><i class="far fa-clock"></i> 4 min read</span>
+            </div>
+            <h4><a href="404.html">The Ultimate Salary Negotiation Playbook for 2025</a></h4>
+            <p style="font-size:.88rem;">Negotiation is a skill. Learn the proven scripts and psychological techniques
+              top candidates use to increase offers by 20–40%.</p>
+            <a href="404.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card animate-on-scroll stagger-3">
+          <div style="overflow:hidden;"><img src="assest/jobs3.webp" alt="Remote work trends" /></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><span><i class="fas fa-tag"></i> Trends</span><span><i
+                  class="far fa-calendar"></i> Apr 3, 2025</span><span><i class="far fa-clock"></i> 6 min read</span>
+            </div>
+            <h4><a href="404.html">Top 10 Hiring Trends Reshaping the Job Market in 2025</a></h4>
+            <p style="font-size:.88rem;">AI, skills-first hiring, and the return-to-office debate — how hiring is
+              evolving and what it means for your career.</p>
+            <a href="404.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-32 animate-on-scroll">
+        <a href="404.html" class="btn btn-secondary btn-lg"><i class="fas fa-book-open"></i> View All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+   <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo" style="margin-bottom:16px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <p>Connecting ambitious professionals with world-class opportunities since 2019. Your trusted partner in
+            career growth and talent acquisition.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>For Candidates</h5>
+          <ul>
+            <li><a href="404.html">Browse Jobs</a></li>
+            <li><a href="404.html">Job Categories</a></li>
+            <li><a href="404.html">Career Guidance</a></li>
+            <li><a href="404.html">Resume Tips</a></li>
+            <li><a href="404.html">Create Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Employers</h5>
+          <ul>
+            <li><a href="404.html">Post a Job</a></li>
+            <li><a href="404.html">Talent Search</a></li>
+            <li><a href="404.html">Recruitment Solutions</a></li>
+            <li><a href="404.html">Employer Brand</a></li>
+            <li><a href="404.html">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="services.html">Service</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TalentBridge. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function openFilter() {
+      document.getElementById('filterSidebar').classList.add('open');
+      document.getElementById('filterOverlay').classList.add('open');
+      document.getElementById('filterCloseBtn').style.display = 'flex';
+    }
+    function closeFilter() {
+      document.getElementById('filterSidebar').classList.remove('open');
+      document.getElementById('filterOverlay').classList.remove('open');
+    }
+  </script>
+  <script>
+    function filterJobs() {
+      const q = document.getElementById('jobSearch').value.toLowerCase();
+      const cards = document.querySelectorAll('.job-list-card');
+      cards.forEach(c => { c.style.display = q === '' || c.textContent.toLowerCase().includes(q) ? 'flex' : 'none'; });
+    }
+    document.querySelectorAll('.page-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (this.querySelector('.fa-chevron-left') || this.querySelector('.fa-chevron-right')) return;
+        document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        window.scrollTo({ top: document.querySelector('.jobs-layout').offsetTop - 100, behavior: 'smooth' });
+      });
+    });
+    document.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const icon = this.querySelector('i');
+        icon.classList.toggle('far');
+        icon.classList.toggle('fas');
+        this.style.color = icon.classList.contains('fas') ? 'var(--primary)' : '';
+        this.style.borderColor = icon.classList.contains('fas') ? 'var(--primary)' : '';
+        window.showToast && showToast(icon.classList.contains('fas') ? 'Job saved!' : 'Job removed from saved.', 'success');
+      });
+    });
+  </script>
+</body>
+
+</html>

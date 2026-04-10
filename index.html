@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentBridge — Connect Top Talent With Great Companies</title>
+  <meta name="description"
+    content="TalentBridge is a premium recruitment platform that connects companies with exceptional talent. Find your dream job or hire the best candidates today." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Hero zigzag section */
+    .features-zigzag {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .zig-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .zig-row.reverse {
+      direction: rtl;
+    }
+
+    .zig-row.reverse>* {
+      direction: ltr;
+    }
+
+    .zig-img {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+
+    .zig-img img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .zig-content .section-label {
+      display: inline-flex;
+    }
+
+    .zig-feature-list {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .zig-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .zig-feature-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .zig-feature-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zig-feature-item strong {
+      display: block;
+      font-size: .9rem;
+      margin-bottom: 2px;
+    }
+
+    .zig-feature-item span {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+
+    /* Testimonial carousel controls */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* Partners logos styled */
+    .partner-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      padding: 0 20px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      transition: all var(--transition);
+      background: #fff;
+    }
+
+    .partner-item:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .partner-item span {
+      font-size: 1.05rem;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 6px;
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+      </a>
+      <div class="navbar-nav">
+        <a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+          href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+      href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+    <div class="mobile-actions"><a href="login.html" class="btn btn-secondary">Login</a></div>
+  </div>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero"
+    style="position:relative; overflow:hidden; background:linear-gradient(135deg,rgba(27, 27, 27, 0.075) 0%,rgba(49, 53, 63, 0.8) 100%)">
+    <video src="assest/hero_animation.mp4" autoplay loop muted playsinline
+      style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;"></video>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="grid-2" style="align-items:center;">
+        <div class="hero-content" style="animation:fadeInLeft .8s ease both;">
+          <span class="hero-badge">
+            <span class="dot"></span>
+            #1 Recruitment Platform in India
+          </span>
+          <h1>Find Your <span>Dream Job</span> or Hire Top Talent</h1>
+          <p>TalentBridge connects ambitious professionals with world-class companies. From startups to Fortune 500s —
+            your next opportunity starts here.</p>
+          <div class="hero-actions">
+            <a href="jobs.html" class="btn btn-accent btn-lg"><i class="fas fa-search"></i> Explore Jobs</a>
+            <a href="services.html" class="btn btn-white btn-lg">For Employers <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong><h3 data-target="50" data-suffix="K+" style="color: #fff;">0</h3></strong>
+              <span>Jobs Posted</span>
+            </div>
+            <div class="hero-stat">
+              <strong><h3 data-target="12" data-suffix="K+" style="color: #fff;">0</h3></strong>
+              <span>Companies</span>
+            </div>
+            <div class="hero-stat">
+              <strong><h3 data-target="98" data-suffix="%" style="color: #fff;">0</h3></strong>
+              <span>Success Rate</span>
+            </div>
+          </div>
+        </div>
+     
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SEARCH BAR ══════════════ -->
+
+
+  <!-- ══════════════ STATS BAR ══════════════ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat-item">
+        <strong><h1 data-target="50000" data-suffix="+" style="color: #fff;">0</h1></strong>
+        <span>Active Job Listings</span>
+      </div>
+      <div class="stat-item">
+        <strong><h1 data-target="12000" data-suffix="+" style="color: #fff;">0</h1></strong>
+        <span>Hiring Companies</span>
+      </div>
+      <div class="stat-item">
+        <strong><h1 data-target="750000" data-suffix="+" style="color: #fff;">0</h1></strong>
+        <span>Registered Candidates</span>
+      </div>
+      <div class="stat-item">
+        <strong><h1 data-target="98" data-suffix="%" style="color: #fff;">0</h1></strong>
+        <span>Placement Success Rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ JOB CATEGORIES ══════════════ -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-th"></i> Explore</span>
+        <h2>Browse by <span class="text-primary">Job Category</span></h2>
+        <p>Discover opportunities across the most in-demand industries and find the perfect match for your skills.
+        </p>
+      </div>
+      <div class="grid-4" style="gap:20px;">
+        <div class="category-card animate-on-scroll stagger-1">
+          <div class="category-icon" style="background:#dbeafe; color:#1d4ed8;"><i class="fas fa-code"></i></div>
+          <h4>Technology</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">12,400 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-2">
+          <div class="category-icon" style="background:#d1fae5; color:#065f46;"><i class="fas fa-chart-line"></i>
+          </div>
+          <h4>Finance</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">6,800 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-3">
+          <div class="category-icon" style="background:#fef3c7; color:#92400e;"><i class="fas fa-bullhorn"></i>
+          </div>
+          <h4>Marketing</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">4,200 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-4">
+          <div class="category-icon" style="background:#fce7f3; color:#9d174d;"><i class="fas fa-palette"></i></div>
+          <h4>Design</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">3,500 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-1">
+          <div class="category-icon" style="background:#ede9fe; color:#5b21b6;"><i class="fas fa-heartbeat"></i>
+          </div>
+          <h4>Healthcare</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">5,100 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-2">
+          <div class="category-icon" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-graduation-cap"></i>
+          </div>
+          <h4>Education</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">2,900 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-3">
+          <div class="category-icon" style="background:#dcfce7; color:#166534;"><i class="fas fa-cogs"></i></div>
+          <h4>Engineering</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">7,600 Jobs</p>
+        </div>
+        <div class="category-card animate-on-scroll stagger-4">
+          <div class="category-icon" style="background:#ffedd5; color:#9a3412;"><i class="fas fa-truck"></i></div>
+          <h4>Logistics</h4>
+          <p style="font-size:.82rem; color:var(--text-muted);">3,200 Jobs</p>
+        </div>
+      </div>
+      <div class="text-center mt-32">
+        <a href="404.html" class="btn btn-secondary"><i class="fas fa-th-large"></i> View All Categories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FEATURED JOBS ══════════════ -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-fire"></i> Hot Picks</span>
+        <h2>Featured <span class="text-primary">Job Openings</span></h2>
+        <p>Hand-picked opportunities from our premium partner companies. Updated daily.</p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-group="jobs" data-tab="all">All Jobs</button>
+        <button class="tab-btn" data-group="jobs" data-tab="tech">Technology</button>
+        <button class="tab-btn" data-group="jobs" data-tab="finance">Finance</button>
+        <button class="tab-btn" data-group="jobs" data-tab="design">Design</button>
+      </div>
+      <div class="tab-pane active" data-group="jobs" data-tab="all">
+        <div class="job-card animate-on-scroll stagger-1">
+          <div class="job-card-header">
+            <div>
+              <h4>Senior Frontend Developer</h4>
+              <span class="company-name"><i class="fas fa-building"></i> TechCorp India</span>
+            </div>
+            <span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Bangalore, IN</span>
+            <span><i class="fas fa-clock"></i> 2 days ago</span>
+            <span><i class="fas fa-users"></i> 45 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">React</span>
+            <span class="badge badge-blue">TypeScript</span>
+            <span class="badge badge-gray">Remote OK</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹18L – ₹28L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+        <div class="job-card animate-on-scroll stagger-2">
+          <div class="job-card-header">
+            <div>
+              <h4>Product Manager</h4>
+              <span class="company-name"><i class="fas fa-building"></i> Nexus Ventures</span>
+            </div>
+            <span class="badge badge-amber">Contract</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Mumbai, IN</span>
+            <span><i class="fas fa-clock"></i> 1 day ago</span>
+            <span><i class="fas fa-users"></i> 78 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">Agile</span>
+            <span class="badge badge-blue">Roadmapping</span>
+            <span class="badge badge-gray">B2B</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹22L – ₹35L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+        <div class="job-card animate-on-scroll stagger-3">
+          <div class="job-card-header">
+            <div>
+              <h4>Data Scientist</h4>
+              <span class="company-name"><i class="fas fa-building"></i> AI Dynamics</span>
+            </div>
+            <span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Hyderabad, IN</span>
+            <span><i class="fas fa-clock"></i> 3 days ago</span>
+            <span><i class="fas fa-users"></i> 120 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-blue">ML</span>
+            <span class="badge badge-gray">NLP</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹20L – ₹40L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+        <div class="job-card animate-on-scroll stagger-1">
+          <div class="job-card-header">
+            <div>
+              <h4>UX/UI Designer</h4>
+              <span class="company-name"><i class="fas fa-building"></i> DesignStudio Co.</span>
+            </div>
+            <span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+            <span><i class="fas fa-clock"></i> Today</span>
+            <span><i class="fas fa-users"></i> 31 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">Figma</span>
+            <span class="badge badge-blue">Prototyping</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹12L – ₹22L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+        <div class="job-card animate-on-scroll stagger-2">
+          <div class="job-card-header">
+            <div>
+              <h4>Financial Analyst</h4>
+              <span class="company-name"><i class="fas fa-building"></i> Global Finance Ltd.</span>
+            </div>
+            <span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Delhi, IN</span>
+            <span><i class="fas fa-clock"></i> 5 days ago</span>
+            <span><i class="fas fa-users"></i> 57 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">Excel</span>
+            <span class="badge badge-blue">SAP</span>
+            <span class="badge badge-gray">CFA</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹10L – ₹18L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+        <div class="job-card animate-on-scroll stagger-3">
+          <div class="job-card-header">
+            <div>
+              <h4>DevOps Engineer</h4>
+              <span class="company-name"><i class="fas fa-building"></i> CloudSystems Inc.</span>
+            </div>
+            <span class="badge badge-blue">Remote</span>
+          </div>
+          <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+            <span><i class="fas fa-clock"></i> 2 days ago</span>
+            <span><i class="fas fa-users"></i> 89 Applied</span>
+          </div>
+          <div class="job-tags">
+            <span class="badge badge-blue">AWS</span>
+            <span class="badge badge-blue">Kubernetes</span>
+            <span class="badge badge-gray">CI/CD</span>
+          </div>
+          <div class="job-footer">
+            <span class="salary">₹16L – ₹32L /yr</span>
+            <a href="404.html" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" data-group="jobs" data-tab="tech">
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>Senior Frontend Developer</h4><span class="company-name">TechCorp India</span>
+            </div><span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Bangalore</span></div>
+          <div class="job-footer"><span class="salary">₹18L – ₹28L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>DevOps Engineer</h4><span class="company-name">CloudSystems Inc.</span>
+            </div><span class="badge badge-blue">Remote</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Remote</span></div>
+          <div class="job-footer"><span class="salary">₹16L – ₹32L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>Data Scientist</h4><span class="company-name">AI Dynamics</span>
+            </div><span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Hyderabad</span></div>
+          <div class="job-footer"><span class="salary">₹20L – ₹40L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+      </div>
+      <div class="tab-pane" data-group="jobs" data-tab="finance">
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>Financial Analyst</h4><span class="company-name">Global Finance Ltd.</span>
+            </div><span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Delhi</span></div>
+          <div class="job-footer"><span class="salary">₹10L – ₹18L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>Investment Banker</h4><span class="company-name">Prime Capital</span>
+            </div><span class="badge badge-amber">Contract</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Mumbai</span></div>
+          <div class="job-footer"><span class="salary">₹25L – ₹60L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+      </div>
+      <div class="tab-pane" data-group="jobs" data-tab="design">
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>UX/UI Designer</h4><span class="company-name">DesignStudio Co.</span>
+            </div><span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Remote</span></div>
+          <div class="job-footer"><span class="salary">₹12L – ₹22L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+        <div class="job-card">
+          <div class="job-card-header">
+            <div>
+              <h4>Brand Designer</h4><span class="company-name">Creative Labs</span>
+            </div><span class="badge badge-green">Full-Time</span>
+          </div>
+          <div class="job-meta"><span><i class="fas fa-map-marker-alt"></i> Bangalore</span></div>
+          <div class="job-footer"><span class="salary">₹8L – ₹16L /yr</span><a href="404.html"
+              class="btn btn-primary btn-sm">Apply</a></div>
+        </div>
+      </div>
+      <div class="text-center mt-32">
+        <a href="jobs.html" class="btn btn-primary btn-lg"><i class="fas fa-briefcase"></i> View All Jobs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ WHY CHOOSE US (Zigzag) ══════════════ -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-star"></i> Why us</span>
+        <h2>Why Choose <span class="text-primary">TalentBridge?</span></h2>
+        <p>We go beyond job boards — we're your full-service hiring and career growth partner.</p>
+      </div>
+      <div class="features-zigzag">
+        <div class="zig-row animate-on-scroll">
+          <div class="zig-img">
+            <img src="assest/index2.webp" alt="AI-powered matching" />
+          </div>
+          <div class="zig-content">
+            <span class="section-label"><i class="fas fa-robot"></i> AI Matching</span>
+            <h3>AI-Powered Candidate Matching</h3>
+            <p>Our proprietary AI engine analyzes thousands of data points to connect the right candidates with the
+              right roles — reducing time-to-hire by up to 67%.</p>
+            <div class="zig-feature-list">
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                <div><strong>Smart Skill Analysis</strong><span>Maps candidate competencies to job requirements in
+                    real
+                    time</span></div>
+              </div>
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-filter"></i></div>
+                <div><strong>Intelligent Screening</strong><span>Filters top 10% applicants automatically</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-24"><a href="404.html" class="btn btn-primary">Learn More <i
+                  class="fas fa-arrow-right"></i></a></div>
+          </div>
+        </div>
+        <div class="zig-row reverse animate-on-scroll">
+          <div class="zig-img">
+            <img src="assest/index3.webp" alt="Expert recruiters" />
+          </div>
+          <div class="zig-content">
+            <span class="section-label"><i class="fas fa-users"></i> Expert Team</span>
+            <h3>World-Class Recruiters Behind Every Hire</h3>
+            <p>Our certified recruitment specialists have deep domain knowledge across 20+ industries. Every
+              placement
+              is backed by a dedicated talent advisor.</p>
+            <div class="zig-feature-list">
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-certificate"></i></div>
+                <div><strong>Certified Specialists</strong><span>SHRM and HRCI certified recruitment team</span>
+                </div>
+              </div>
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-headset"></i></div>
+                <div><strong>Dedicated Support</strong><span>24/7 candidate & employer assistance</span></div>
+              </div>
+            </div>
+            <div class="mt-24"><a href="404.html" class="btn btn-primary">Meet the Team <i
+                  class="fas fa-arrow-right"></i></a></div>
+          </div>
+        </div>
+        <div class="zig-row animate-on-scroll">
+          <div class="zig-img">
+            <img src="assest/index4.webp" alt="Fast hiring process" />
+          </div>
+          <div class="zig-content">
+            <span class="section-label"><i class="fas fa-rocket"></i> Speed</span>
+            <h3>Hire 3x Faster With Our Streamlined Process</h3>
+            <p>From sourcing to offer in record time. Our end-to-end hiring workflow eliminates bottlenecks and
+              keeps
+              candidates engaged throughout.</p>
+            <div class="zig-feature-list">
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                <div><strong>Automated Scheduling</strong><span>1-click interview scheduling across time
+                    zones</span>
+                </div>
+              </div>
+              <div class="zig-feature-item">
+                <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                <div><strong>Real-Time Analytics</strong><span>Track pipeline health and optimize hiring
+                    funnel</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-24"><a href="404.html" class="btn btn-primary">View Services <i
+                  class="fas fa-arrow-right"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ COMPANY PARTNERS ══════════════ -->
+  <section class="section-sm partners-strip">
+    <div class="container">
+      <p class="text-center text-muted mb-0"
+        style="margin-bottom:28px; font-size:.9rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;">
+        Trusted by 12,000+ Companies Worldwide</p>
+      <div class="partners-grid animate-on-scroll">
+        <div class="partner-item"><span>TechCorp</span></div>
+        <div class="partner-item"><span>NexusHQ</span></div>
+        <div class="partner-item"><span>Infosys</span></div>
+        <div class="partner-item"><span>Wipro</span></div>
+        <div class="partner-item"><span>Zoho</span></div>
+        <div class="partner-item"><span>Razorpay</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TESTIMONIALS ══════════════ -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-quote-left"></i> Success Stories</span>
+        <h2>What Our <span class="text-primary">Candidates Say</span></h2>
+        <p>Real stories from professionals who found career-defining opportunities through TalentBridge.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll stagger-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"TalentBridge completely transformed my job search. Within 3 weeks, I had 4 interviews and
+            received an offer from my dream company. The AI matching was incredibly accurate!"</blockquote>
+          <div class="testimonial-author">
+            <img src="assest/uifaces-popular-avatar (1) (1).webp" alt="Priya Sharma" />
+            <div>
+              <strong>Priya Sharma</strong>
+              <span>Senior Software Engineer @ TechCorp</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll stagger-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"As a hiring manager, TalentBridge saved us hundreds of hours. The quality of candidates is
+            outstanding. We filled 3 senior roles in under 4 weeks — unheard of before!"</blockquote>
+          <div class="testimonial-author">
+            <img src="assest/avatar2.webp" alt="Rahul Mehta" />
+            <div>
+              <strong>Rahul Mehta</strong>
+              <span>VP of Engineering @ Nexus Ventures</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll stagger-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"The career counseling service helped me negotiate my salary by 35% more than what I initially
+            accepted. My recruiter was professional, responsive, and genuinely cared."</blockquote>
+          <div class="testimonial-author">
+            <img src="assest/avatar3.webp" alt="Ananya Reddy" />
+            <div>
+              <strong>Ananya Reddy</strong>
+              <span>Product Manager @ Zoho</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CTA BANNER ══════════════ -->
+  <section class="section-sm" style="background:#fff; padding:64px 0;">
+    <div class="container">
+      <div class="cta-banner animate-on-scroll">
+        <div class="content">
+          <span class="section-label"
+            style="background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.3);"><i
+              class="fas fa-rocket"></i> Get Started</span>
+          <h2>Ready to Land Your Next Big Opportunity?</h2>
+          <p>Join 750,000+ professionals who found their dream jobs through TalentBridge. It's free to get started.
+          </p>
+          <div class="btn-group">
+            <a href="jobs.html" class="btn btn-accent btn-lg"><i class="fas fa-search"></i> Browse Jobs</a>
+            <a href="login.html" class="btn btn-white btn-lg">Create Free Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo" style="margin-bottom:16px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <p>Connecting ambitious professionals with world-class opportunities since 2019. Your trusted partner in
+            career growth and talent acquisition.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>For Candidates</h5>
+          <ul>
+            <li><a href="404.html">Browse Jobs</a></li>
+            <li><a href="404.html">Job Categories</a></li>
+            <li><a href="404.html">Career Guidance</a></li>
+            <li><a href="404.html">Resume Tips</a></li>
+            <li><a href="404.html">Create Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Employers</h5>
+          <ul>
+            <li><a href="404.html">Post a Job</a></li>
+            <li><a href="404.html">Talent Search</a></li>
+            <li><a href="404.html">Recruitment Solutions</a></li>
+            <li><a href="404.html">Employer Brand</a></li>
+            <li><a href="404.html">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="services.html">Service</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TalentBridge. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

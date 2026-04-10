@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — TalentBridge</title>
+  <meta name="description"
+    content="Get in touch with TalentBridge's recruitment team. We're here to help candidates and employers achieve their hiring goals." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-form-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .contact-form-card>p {
+      font-size: .9rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .social-link-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .social-link-item:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+
+    .social-link-item .s-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .social-link-item strong {
+      display: block;
+      font-size: .9rem;
+    }
+
+    .social-link-item span {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    .office-hours {
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(26, 86, 219, .15);
+    }
+
+    .office-hours h5 {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .88rem;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(26, 86, 219, .1);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+
+    /* map */
+.map-section {
+  margin-bottom: 80px;
+}
+
+.map-wrapper{
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.map-wrapper iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 30px;
+}
+
+.map-placeholder{
+  position: absolute;
+  inset: 0;
+  background: #eef2f6;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  border: 2px dashed #cbd5e1;
+}
+
+.map-placeholder i{
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #6366f1;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+      </a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+          href="jobs.html">Jobs</a><a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a
+      href="jobs.html">Jobs</a><a href="contact.html">Contact</a>
+    <div class="mobile-actions"><a href="login.html" class="btn btn-secondary">Login</a></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero"
+    style="background:linear-gradient(135deg,rgba(27, 27, 27, 0.075) 0%,rgba(49, 53, 63, 0.8) 100%),url('assest/hero_contact.webp') center/cover no-repeat;">
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="section-label"
+        style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);margin-bottom:16px;"><i
+          class="fas fa-envelope"></i> Contact Us</span>
+      <h1>Let's Start a Conversation</h1>
+      <p>Whether you're a candidate or an employer — our team is ready to help you achieve your goals.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"
+          style="font-size:.7rem;"></i><span>Contact</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO CARDS -->
+  <section class="section-sm" style="background:#fff; padding:48px 0;">
+    <div class="container">
+      <div class="grid-4" style="gap:20px;">
+        <div class="contact-info-card animate-on-scroll stagger-1">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Our Office</h4>
+            <p>14th Floor, Prestige Tower,<br />MG Road, Bangalore — 560001, India</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll stagger-2">
+          <div class="contact-icon" style="background:#d1fae5;color:var(--success);"><i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <h4>Call Us</h4>
+            <p>+91 80 4567 8900<br />Mon–Fri, 9 AM – 6 PM IST</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll stagger-3">
+          <div class="contact-icon" style="background:#fef3c7;color:var(--accent-dark);"><i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4>Email Us</h4>
+            <p>hello@talentbridge.in<br />support@talentbridge.in</p>
+          </div>
+        </div>
+        <div class="contact-info-card animate-on-scroll stagger-4">
+          <div class="contact-icon" style="background:#ede9fe;color:#5b21b6;"><i class="fas fa-comments"></i></div>
+          <div>
+            <h4>Live Chat</h4>
+            <p>Chat with our team in real time. Available 9 AM – 9 PM IST daily.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM + SIDEBAR -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- LEFT INFO -->
+        <div class="animate-on-scroll">
+          <span class="section-label"><i class="fas fa-info-circle"></i> Support</span>
+          <h2 style="margin-bottom:16px;">We're Here <span class="text-primary">to Help</span></h2>
+          <p style="margin-bottom:32px;">Our support team responds within 2 business hours. For urgent hiring needs,
+            call us directly or use live chat for an instant response.</p>
+
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <div class="social-link-item">
+              <div class="s-icon" style="background:#dbeafe;color:#1d4ed8;"><i class="fab fa-linkedin-in"></i></div>
+              <div><strong>LinkedIn</strong><span>linkedin.com/company/talentbridge</span></div>
+            </div>
+            <div class="social-link-item">
+              <div class="s-icon" style="background:#dbeafe;color:#1d9bf0;"><i class="fab fa-twitter"></i></div>
+              <div><strong>Twitter</strong><span>@TalentBridgeIN</span></div>
+            </div>
+            <div class="social-link-item">
+              <div class="s-icon" style="background:#d1fae5;color:#25d366;"><i class="fab fa-whatsapp"></i></div>
+              <div><strong>WhatsApp</strong><span>+91 98765 43210</span></div>
+            </div>
+            <div class="social-link-item">
+              <div class="s-icon" style="background:#fce7f3;color:#e1306c;"><i class="fab fa-instagram"></i></div>
+              <div><strong>Instagram</strong><span>@talentbridge.in</span></div>
+            </div>
+          </div>
+
+          <div class="office-hours">
+            <h5><i class="fas fa-clock"></i> Office Hours</h5>
+            <div class="hours-row"><span>Monday – Friday</span><span><strong>9:00 AM – 6:00 PM</strong></span></div>
+            <div class="hours-row"><span>Saturday</span><span><strong>10:00 AM – 2:00 PM</strong></span></div>
+            <div class="hours-row"><span>Sunday</span><span style="color:var(--danger);">Closed</span></div>
+          </div>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-card animate-on-scroll">
+          <h3>Send Us a Message</h3>
+          <p>Fill in the form below and our team will get back to you within 2 hours on business days.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="John" required />
+                <span class="error-msg" data-error="firstName"><i class="fas fa-exclamation-circle"></i> First name is
+                  required.</span>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Doe" required />
+                <span class="error-msg" data-error="lastName"><i class="fas fa-exclamation-circle"></i> Last name is
+                  required.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="contactEmail" class="form-control"
+                placeholder="john@company.com" required />
+              <span class="error-msg" data-error="contactEmail"><i class="fas fa-exclamation-circle"></i> Valid email is
+                required.</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 98765 43210" />
+              </div>
+              <div class="form-group">
+                <label for="enquiryType">Enquiry Type *</label>
+                <select id="enquiryType" name="enquiryType" class="form-control" required>
+                  <option value="">Select enquiry type</option>
+                  <option>Job Seeker</option>
+                  <option>Employer / Hiring</option>
+                  <option>Partnership</option>
+                  <option>Media / Press</option>
+                  <option>Technical Support</option>
+                  <option>Other</option>
+                </select>
+                <span class="error-msg" data-error="enquiryType"><i class="fas fa-exclamation-circle"></i> Please select
+                  an enquiry type.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" name="subject" class="form-control" placeholder="How can we help?"
+                required />
+              <span class="error-msg" data-error="subject"><i class="fas fa-exclamation-circle"></i> Subject is
+                required.</span>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" class="form-control"
+                placeholder="Tell us more about your enquiry..." required style="min-height:140px;"></textarea>
+              <span class="error-msg" data-error="message"><i class="fas fa-exclamation-circle"></i> Message is
+                required.</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+              <input type="checkbox" id="privacyConsent"
+                style="accent-color:var(--primary); width:18px; height:18px; cursor:pointer;" required />
+              <label for="privacyConsent" style="font-size:.88rem; color:var(--text-muted); cursor:pointer;">I agree to
+                the <a href="404.html" style="color:var(--primary);">Privacy Policy</a> and consent to being contacted
+                by
+                TalentBridge.</label>
+            </div>
+            <a href="404.html"><button type="submit" class="btn btn-primary w-full btn-lg" style="justify-content:center;"><i
+                class="fas fa-paper-plane"></i> Send Message</button></a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- map -->
+
+  <section class="map-section reveal-up">
+  <div class="container">
+
+    <div class="map-wrapper">
+
+      <iframe
+        src="https://www.google.com/maps?q=MMR+Complex,+Chinna+Thirupathi,+near+Chinna+Muniyappan+Kovil,+Salem,+Tamil+Nadu+636008&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <div class="map-placeholder">
+        <i class="fas fa-map-marked-alt"></i>
+        <p>Interactive Map Loading...</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label"><i class="fas fa-question-circle"></i> Support FAQ</span>
+        <h2>Quick <span class="text-primary">Answers</span></h2>
+        <p>Common questions about reaching us and getting support.</p>
+      </div>
+      <div style="max-width:720px; margin:0 auto;">
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">What is your response time? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our team typically responds within 2 business hours for email enquiries. Live
+              chat responses are instant during operating hours (9 AM – 9 PM IST).</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">How do I report a technical issue? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Email support@talentbridge.in with "Technical Issue" in the subject line.
+              Include your account email and a description of the problem. Screenshots are always helpful.</div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">Can I schedule a demo for my company? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely! Select "Employer / Hiring" in the enquiry type above and mention
+              you'd like a demo. Our enterprise sales team will reach out within 4 hours to book a convenient time.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">Is there a physical office I can visit? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes — our headquarters is at 14th Floor, Prestige Tower, MG Road, Bangalore.
+              We welcome visits by appointment. Please email us first to schedule a meeting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo" style="margin-bottom:16px; display:flex;">
+            <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img">
+          </a>
+          <p>Connecting ambitious professionals with world-class opportunities since 2019. Your trusted partner in
+            career growth and talent acquisition.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>For Candidates</h5>
+          <ul>
+            <li><a href="404.html">Browse Jobs</a></li>
+            <li><a href="404.html">Job Categories</a></li>
+            <li><a href="404.html">Career Guidance</a></li>
+            <li><a href="404.html">Resume Tips</a></li>
+            <li><a href="404.html">Create Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Employers</h5>
+          <ul>
+            <li><a href="404.html">Post a Job</a></li>
+            <li><a href="404.html">Talent Search</a></li>
+            <li><a href="404.html">Recruitment Solutions</a></li>
+            <li><a href="404.html">Employer Brand</a></li>
+            <li><a href="404.html">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            
+            <li><a href="services.html">Service</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TalentBridge. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const consent = document.getElementById('privacyConsent');
+      if (!consent.checked) { showToast('Please accept the privacy policy.', 'error'); return; }
+      if (!window.validateForm(this)) return;
+      showToast('Message sent! We\'ll respond within 2 business hours.', 'success');
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>

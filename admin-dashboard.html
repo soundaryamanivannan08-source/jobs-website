@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — TalentBridge</title>
+  <meta name="description"
+    content="TalentBridge Admin Dashboard — manage job posts, applicants, users, and view recruitment analytics." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body class="dashboard-page">
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner" style="max-width: 100%;">
+      <a href="index.html" class="navbar-logo">
+        <img src="assest/Stackly-logo-Blue.webp" alt="stackly" class="logo-img" style="width: 100px;">
+      </a>
+
+      <div class="navbar-actions" style="gap:16px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div
+            style="width:34px; height:34px; background:var(--primary); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; font-weight:700;">
+            A</div>
+          <div style="font-size:.88rem;">
+            <div style="font-weight:600;">Admin</div>
+            <div
+              style="font-size:.75rem; color:var(--text-muted); max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"
+              class="user-email-display">admin@talentbridge.in</div>
+          </div>
+
+          <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+  </nav>
+
+
+
+  <div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+
+        <nav class="sidebar-nav">
+          <div class="sidebar-section-label">Main</div>
+          <a href="#overview" class="active"><i class="fas fa-tachometer-alt"></i> Overview</a>
+          <a href="#analytics"><i class="fas fa-chart-bar"></i> Analytics</a>
+          <a href="#applications"><i class="fas fa-file-alt"></i> Applications <span class="sidebar-badge">24</span></a>
+
+          <div class="sidebar-section-label">Management</div>
+          <a href="#jobs"><i class="fas fa-briefcase"></i> Manage Jobs</a>
+          <a href="#users"><i class="fas fa-users"></i> Manage Users</a>
+          <a href="#recruiters"><i class="fas fa-user-tie"></i> Recruiters</a>
+
+          <div class="sidebar-section-label">Reports</div>
+          <a href="#reports"><i class="fas fa-chart-pie"></i> Reports</a>
+          <a href="#activity"><i class="fas fa-history"></i> Activity Log</a>
+
+
+          <div class="sidebar-section-label">System</div>
+          <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+      <!-- OVERVIEW TAB -->
+      <div id="overview" class="tab-pane active">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Admin Dashboard</h2>
+            <p>Welcome back! Here's what's happening with your recruitment platform today.</p>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="jobs.html" class="btn btn-secondary btn-sm"><i class="fas fa-external-link-alt"></i> View Site</a>
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i
+                class="fas fa-plus"></i> Post New Job</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info"><strong data-target="248">0</strong><span>Total Jobs Posted</span>
+              <div class="kpi-change up"><i class="fas fa-arrow-up"></i> +12 this week</div>
+            </div>
+            <div class="kpi-icon" style="background:#dbeafe; color:#1d4ed8;"><i class="fas fa-briefcase"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info"><strong data-target="3842">0</strong><span>Total Applicants</span>
+              <div class="kpi-change up"><i class="fas fa-arrow-up"></i> +284 this week</div>
+            </div>
+            <div class="kpi-icon" style="background:#d1fae5; color:#059669;"><i class="fas fa-users"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info"><strong data-target="127">0</strong><span>Placements</span>
+              <div class="kpi-change up"><i class="fas fa-arrow-up"></i> +18%</div>
+            </div>
+            <div class="kpi-icon" style="background:#fef3c7; color:#d97706;"><i class="fas fa-handshake"></i></div>
+          </div>
+          <div class="kpi-card animate-on-scroll">
+            <div class="kpi-info"><strong data-target="14" data-suffix=" days">0</strong><span>Avg. Time to Hire</span>
+              <div class="kpi-change up"><i class="fas fa-arrow-down"></i> 3 days faster</div>
+            </div>
+            <div class="kpi-icon" style="background:#ede9fe; color:#5b21b6;"><i class="fas fa-clock"></i></div>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="dashboard-section animate-on-scroll">
+            <div class="dashboard-section-header">
+              <h3><i class="fas fa-history" style="color:var(--primary);"></i> Recent System Activity</h3>
+              <a href="#activity" class="btn btn-secondary btn-sm"
+                onclick="document.querySelector('a[href=\'#activity\']').click()">View Full Log</a>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content"><strong>Job Posted — Sr. DevOps Engineer</strong>
+                  <p>By Admin · CloudSystems Inc.</p>
+                  <p class="notif-time">Today, 10:32 AM</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot green"></div>
+                <div class="timeline-content"><strong>Candidate Shortlisted — Rahul Mehta</strong>
+                  <p>For Product Manager role at Nexus</p>
+                  <p class="notif-time">Today, 9:15 AM</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot blue"></div>
+                <div class="timeline-content"><strong>New Recruiter Joined — Sarah Jenkins</strong>
+                  <p>Team: Technical Recruitment</p>
+                  <p class="notif-time">Yesterday, 5:45 PM</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot amber"></div>
+                <div class="timeline-content"><strong>System Maintenance Completed</strong>
+                  <p>Database optimization and security patches.</p>
+                  <p class="notif-time">Yesterday, 11:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-section animate-on-scroll">
+            <div class="dashboard-section-header">
+              <h3><i class="fas fa-bolt" style="color:var(--accent);"></i> Quick Actions</h3>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;">
+              <div class="card" style="padding:16px; text-align:center; cursor:pointer;"
+                onclick="window.location.href='404.html'">
+                <i class="fas fa-download" style="font-size:1.2rem; color:var(--primary); margin-bottom:8px;"></i>
+                <div style="font-size:.8rem; font-weight:600;">Export Data</div>
+              </div>
+              <div class="card" style="padding:16px; text-align:center; cursor:pointer;"
+                onclick="window.location.href='404.html'">
+                <i class="fas fa-user-plus" style="font-size:1.2rem; color:var(--success); margin-bottom:8px;"></i>
+                <div style="font-size:.8rem; font-weight:600;">Invite Recruiter</div>
+              </div>
+              <div class="card" style="padding:16px; text-align:center; cursor:pointer;"
+                onclick="window.location.href='404.html'">
+                <i class="fas fa-shield-alt" style="font-size:1.2rem; color:var(--danger); margin-bottom:8px;"></i>
+                <div style="font-size:.8rem; font-weight:600;">Security Audit</div>
+              </div>
+              <div class="card" style="padding:16px; text-align:center; cursor:pointer;"
+                onclick="window.location.href='404.html'">
+                <i class="fas fa-server" style="font-size:1.2rem; color:var(--text-muted); margin-bottom:8px;"></i>
+                <div style="font-size:.8rem; font-weight:600;">System Health</div>
+              </div>
+            </div>
+            <div class="card"
+              style="margin-top:16px; padding:20px; background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:#fff;">
+              <h4 style="color:#fff; margin-bottom:8px;">Need Help?</h4>
+              <p style="color:rgba(255,255,255,.8); font-size:.85rem; margin-bottom:12px;">Check our documentation or
+                contact support for advanced admin features.</p>
+              <button class="btn btn-white btn-sm" style="width:100%;" onclick="window.location.href='404.html'">View Docs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ANALYTICS TAB -->
+      <div id="analytics" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Recruitment Analytics</h2>
+            <p>Deep dive into your hiring funnel and platform performance.</p>
+          </div>
+        </div>
+        <div class="dash-grid-2">
+          <div class="analytics-card animate-on-scroll">
+            <div class="dashboard-section-header">
+              <h3>Applications by Week</h3><span class="badge badge-blue">Last 7 Weeks</span>
+            </div>
+            <div class="chart-placeholder">
+              <div class="chart-bar" data-height="60%"></div>
+              <div class="chart-bar" data-height="75%"></div>
+              <div class="chart-bar" data-height="55%"></div>
+              <div class="chart-bar" data-height="90%"></div>
+              <div class="chart-bar" data-height="70%"></div>
+              <div class="chart-bar" data-height="85%"></div>
+              <div class="chart-bar" data-height="95%"></div>
+            </div>
+          </div>
+          <div class="analytics-card animate-on-scroll">
+            <div class="dashboard-section-header">
+              <h3>Jobs by Category</h3><a href="404.html" style="font-size:.82rem; color:var(--primary);">View
+                Report</a>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:14px; margin-top:8px;">
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span
+                    style="font-size:.88rem;">Technology</span><span
+                    style="font-size:.88rem; font-weight:700;">48%</span></div>
+                <div class="progress-bar">
+                  <div class="progress-fill" data-width="48%"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span
+                    style="font-size:.88rem;">Finance</span><span style="font-size:.88rem; font-weight:700;">22%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill green" data-width="22%"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span
+                    style="font-size:.88rem;">Marketing</span><span
+                    style="font-size:.88rem; font-weight:700;">18%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill amber" data-width="18%"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span
+                    style="font-size:.88rem;">Human Resources</span><span
+                    style="font-size:.88rem; font-weight:700;">12%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="background:var(--secondary);" data-width="12%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid-3" style="margin-top:24px;">
+          <div class="card animate-on-scroll">
+            <div style="font-size:.85rem; color:var(--text-muted); margin-bottom:8px;">Traffic Source</div>
+            <div style="display:flex; align-items:flex-end; gap:8px;">
+              <strong style="font-size:1.5rem;">65%</strong>
+              <span class="badge badge-green" style="font-size:.7rem; padding:2px 8px;">Direct</span>
+            </div>
+            <div class="progress-bar" style="height:6px; margin-top:12px;">
+              <div class="progress-fill" data-width="65%"></div>
+            </div>
+          </div>
+          <div class="card animate-on-scroll">
+            <div style="font-size:.85rem; color:var(--text-muted); margin-bottom:8px;">Conversion Rate</div>
+            <div style="display:flex; align-items:flex-end; gap:8px;">
+              <strong style="font-size:1.5rem;">12.4%</strong>
+              <span class="badge badge-blue" style="font-size:.7rem; padding:2px 8px;">+2.1%</span>
+            </div>
+            <div class="progress-bar" style="height:6px; margin-top:12px;">
+              <div class="progress-fill blue" data-width="45%"></div>
+            </div>
+          </div>
+          <div class="card animate-on-scroll">
+            <div style="font-size:.85rem; color:var(--text-muted); margin-bottom:8px;">Bounce Rate</div>
+            <div style="display:flex; align-items:flex-end; gap:8px;">
+              <strong style="font-size:1.5rem;">24.8%</strong>
+              <span class="badge badge-amber" style="font-size:.7rem; padding:2px 8px;">Stable</span>
+            </div>
+            <div class="progress-bar" style="height:6px; margin-top:12px;">
+              <div class="progress-fill amber" data-width="25%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- APPLICATIONS TAB -->
+      <div id="applications" class="tab-pane">
+        <div class="dashboard-header" style="margin-bottom:24px;">
+          <div class="dashboard-title">
+            <h2>Applications Management</h2>
+            <p>Review and process candidate applications across all active jobs.</p>
+          </div>
+        </div>
+
+        <div class="dash-grid-4" style="margin-bottom:24px;">
+          <div class="card" style="padding:16px; border-left:4px solid var(--primary);">
+            <div style="font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted);">
+              Total</div>
+            <div style="font-size:1.4rem; font-weight:700;">142</div>
+          </div>
+          <div class="card" style="padding:16px; border-left:4px solid var(--warning);">
+            <div style="font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted);">
+              Pending</div>
+            <div style="font-size:1.4rem; font-weight:700;">24</div>
+          </div>
+          <div class="card" style="padding:16px; border-left:4px solid var(--success);">
+            <div style="font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted);">
+              Shortlisted</div>
+            <div style="font-size:1.4rem; font-weight:700;">38</div>
+          </div>
+          <div class="card" style="padding:16px; border-left:4px solid var(--danger);">
+            <div style="font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted);">
+              Rejected</div>
+            <div style="font-size:1.4rem; font-weight:700;">80</div>
+          </div>
+        </div>
+
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Candidate</th>
+                <th>Role</th>
+                <th>Company</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <div
+                      style="width:36px; height:36px; border-radius:10px; background:#dbeafe; color:#1d4ed8; display:flex; align-items:center; justify-content:center; font-weight:700;">
+                      PS</div>
+                    <div>
+                      <div style="font-weight:600; font-size:.9rem;">Priya Sharma</div>
+                      <div style="font-size:.78rem; color:var(--text-muted);">priya@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-size:.9rem;">Sr. Frontend Dev</td>
+                <td>TechCorp</td>
+                <td><span class="badge badge-amber">Pending</span></td>
+                <td><button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Review</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <div
+                      style="width:36px; height:36px; border-radius:10px; background:#d1fae5; color:#065f46; display:flex; align-items:center; justify-content:center; font-weight:700;">
+                      RM</div>
+                    <div>
+                      <div style="font-weight:600; font-size:.9rem;">Rahul Mehta</div>
+                      <div style="font-size:.78rem; color:var(--text-muted);">rahul@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-size:.9rem;">Product Manager</td>
+                <td>Nexus</td>
+                <td><span class="badge badge-green">Shortlisted</span></td>
+                <td><button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">View</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <div
+                      style="width:36px; height:36px; border-radius:10px; background:#fee2e2; color:#b91c1c; display:flex; align-items:center; justify-content:center; font-weight:700;">
+                      AK</div>
+                    <div>
+                      <div style="font-weight:600; font-size:.9rem;">Amit Kumar</div>
+                      <div style="font-size:.78rem; color:var(--text-muted);">amit.k@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-size:.9rem;">UX Designer</td>
+                <td>Creative Studio</td>
+                <td><span class="badge badge-red">Rejected</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Details</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <div
+                      style="width:36px; height:36px; border-radius:10px; background:#fef3c7; color:#92400e; display:flex; align-items:center; justify-content:center; font-weight:700;">
+                      SN</div>
+                    <div>
+                      <div style="font-weight:600; font-size:.9rem;">Sonia Nair</div>
+                      <div style="font-size:.78rem; color:var(--text-muted);">sonia@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-size:.9rem;">Data Analyst</td>
+                <td>DataFlow</td>
+                <td><span class="badge badge-blue">Interviewing</span></td>
+                <td><button class="btn btn-primary btn-sm"
+                    onclick="window.location.href='404.html'">Reschedule</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <div
+                      style="width:36px; height:36px; border-radius:10px; background:#ede9fe; color:#5b21b6; display:flex; align-items:center; justify-content:center; font-weight:700;">
+                      VK</div>
+                    <div>
+                      <div style="font-weight:600; font-size:.9rem;">Vikram Singh</div>
+                      <div style="font-size:.78rem; color:var(--text-muted);">vikram@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-size:.9rem;">DevOps Engineer</td>
+                <td>CloudStack</td>
+                <td><span class="badge badge-green">Hired</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Profile</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <!-- MANAGE JOBS TAB -->
+      <div id="jobs" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Manage Job Posts</h2>
+            <p>Create, edit, and monitor your active and archived job listings.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i
+              class="fas fa-plus"></i> Add New Job</button>
+        </div>
+
+        <div class="card" style="margin-bottom:24px; padding:16px;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:200px; position:relative;">
+              <i class="fas fa-search"
+                style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-light);"></i>
+              <input type="text" class="form-control" placeholder="Search jobs by title or company..."
+                style="padding-left:36px;">
+            </div>
+            <select class="form-control" style="width:auto; min-width:140px;">
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Closed</option>
+              <option>Draft</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dash-grid-3">
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">Sr. Frontend Developer</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">TechCorp · 45 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-green">Active</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Edit</button></div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">Data Scientist</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">AI Dynamics · 120 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-green">Active</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Edit</button></div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">Product Designer</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">Nexus · 32 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-amber">Draft</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Edit</button></div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">Backend Engineer</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">CloudSystems · 88 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-green">Active</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Edit</button></div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">Marketing Manager</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">GrowthLabs · 12 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-red">Closed</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Reopen</button></div>
+          </div>
+          <div class="card">
+            <div style="font-weight:600; font-size:.95rem;">HR Specialist</div>
+            <div style="font-size:.8rem; color:var(--text-muted); margin:4px 0 12px;">TalentPath · 15 applicants</div>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="badge badge-green">Active</span><button
+                class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Edit</button></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- MANAGE USERS TAB -->
+      <div id="users" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>User Management</h2>
+            <p>Manage job seeker and employer accounts on the platform.</p>
+          </div>
+        </div>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Joined</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                      style="width:34px;height:34px;border-radius:8px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      PS</div>
+                    <div>
+                      <div style="font-weight:600;font-size:.88rem;">Priya Sharma</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-blue">Job Seeker</span></td>
+                <td>Jan 12, 2025</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Manage</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                      style="width:34px;height:34px;border-radius:8px;background:#fef3c7;color:#92400e;display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      RC</div>
+                    <div>
+                      <div style="font-weight:600;font-size:.88rem;">Rakesh Chandra</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-amber">Employer</span></td>
+                <td>Feb 05, 2025</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Manage</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                      style="width:34px;height:34px;border-radius:8px;background:#d1fae5;color:#065f46;display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      ML</div>
+                    <div>
+                      <div style="font-weight:600;font-size:.88rem;">Meera London</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-blue">Job Seeker</span></td>
+                <td>Mar 15, 2025</td>
+                <td><span class="badge badge-red">Suspended</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Manage</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                      style="width:34px;height:34px;border-radius:8px;background:#ede9fe;color:#5b21b6;display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      AJ</div>
+                    <div>
+                      <div style="font-weight:600;font-size:.88rem;">Anjali Joshi</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-amber">Employer</span></td>
+                <td>Apr 02, 2025</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Manage</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                      style="width:34px;height:34px;border-radius:8px;background:#fee2e2;color:#b91c1c;display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      SK</div>
+                    <div>
+                      <div style="font-weight:600;font-size:.88rem;">Suresh Kumar</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-blue">Job Seeker</span></td>
+                <td>Apr 09, 2025</td>
+                <td><span class="badge badge-amber">Pending</span></td>
+                <td><button class="btn btn-secondary btn-sm"
+                    onclick="window.location.href='404.html'">Manage</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div id="recruiters" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Recruiter Team</h2>
+            <p>Monitor performance and activity of your recruitment team.</p>
+          </div>
+        </div>
+
+        <div class="dash-grid-3" style="margin-bottom:24px;">
+          <div class="card animate-on-scroll" style="text-align:center;">
+            <div style="font-size:1.5rem; font-weight:700; color:var(--primary);">12</div>
+            <div style="font-size:.8rem; color:var(--text-muted);">Active Recruiters</div>
+          </div>
+          <div class="card animate-on-scroll" style="text-align:center;">
+            <div style="font-size:1.5rem; font-weight:700; color:var(--success);">45</div>
+            <div style="font-size:.8rem; color:var(--text-muted);">Total Placements (MTD)</div>
+          </div>
+          <div class="card animate-on-scroll" style="text-align:center;">
+            <div style="font-size:1.5rem; font-weight:700; color:var(--accent);">8.2</div>
+            <div style="font-size:.8rem; color:var(--text-muted);">Avg Partner Rating</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px;">
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:var(--primary);">AK</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">Aisha Kumar</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">Senior Recruiter · 12 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:var(--success);">PN</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">Priya Nair</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">Tech Recruiter · 8 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:var(--secondary);">RS</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">Rahul Singh</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">Executive Headhunter · 5 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:var(--accent);">JS</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">John Smith</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">IT Recruiter · 10 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:var(--danger);">SY</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">Sonia Yadav</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">Junior Recruiter · 3 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+          <div class="recruiter-activity-card">
+            <div class="recruiter-avatar" style="background:#6366f1;">VM</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;">Vikram Malhotra</div>
+              <div style="font-size:.8rem; color:var(--text-muted);">Sales Recruiter · 7 placements</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'">Stats</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- REPORTS TAB -->
+      <div id="reports" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Reports &amp; Analytics</h2>
+            <p>Generate and export recruitment performance reports.</p>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="card">
+            <h3 style="margin-bottom:20px; font-size:1.1rem;"><i class="fas fa-file-download"
+                style="color:var(--primary); margin-right:8px;"></i> Available Reports</h3>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div
+                style="display:flex; align-items:center; justify-content:space-between; padding:12px; border:1px solid var(--border); border-radius:8px;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Monthly Hiring Trends</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">PDF · 2.4 MB</div>
+                </div>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="window.location.href='404.html'">Download</button>
+              </div>
+              <div
+                style="display:flex; align-items:center; justify-content:space-between; padding:12px; border:1px solid var(--border); border-radius:8px;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Revenue &amp; Billing Summary</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">XLSX · 1.1 MB</div>
+                </div>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="window.location.href='404.html'">Download</button>
+              </div>
+              <div
+                style="display:flex; align-items:center; justify-content:space-between; padding:12px; border:1px solid var(--border); border-radius:8px;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Recruiter Performance Audit</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">PDF · 3.8 MB</div>
+                </div>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="window.location.href='404.html'">Download</button>
+              </div>
+              <div
+                style="display:flex; align-items:center; justify-content:space-between; padding:12px; border:1px solid var(--border); border-radius:8px;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Diversity &amp; Inclusion Metrics</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">CSV · 450 KB</div>
+                </div>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="window.location.href='404.html'">Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom:20px; font-size:1.1rem;"><i class="fas fa-history"
+                style="color:var(--accent); margin-right:8px;"></i> Recent Downloads</h3>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; gap:12px;">
+                <div
+                  style="width:40px; height:40px; border-radius:8px; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                  <div style="font-weight:600; font-size:.85rem;">Q1_Hiring_Report.pdf</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">Downloaded by Admin · 2 hours ago</div>
+                </div>
+              </div>
+              <div style="display:flex; gap:12px;">
+                <div
+                  style="width:40px; height:40px; border-radius:8px; background:#d1fae5; color:#059669; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-file-excel"></i>
+                </div>
+                <div>
+                  <div style="font-weight:600; font-size:.85rem;">Applicant_Export_Jan.xlsx</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">Downloaded by Priya Nair · Yesterday</div>
+                </div>
+              </div>
+              <div style="display:flex; gap:12px;">
+                <div
+                  style="width:40px; height:40px; border-radius:8px; background:#fee2e2; color:#b91c1c; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fas fa-file-csv"></i>
+                </div>
+                <div>
+                  <div style="font-weight:600; font-size:.85rem;">Job_Post_Analytics.csv</div>
+                  <div style="font-size:.75rem; color:var(--text-muted);">Downloaded by Admin · 3 days ago</div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="width:100%; margin-top:24px;"
+              onclick="window.location.href='404.html'">View All Archives</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ACTIVITY LOG TAB -->
+      <div id="activity" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>Detailed Activity Log</h2>
+            <p>Audit trail of all system and recruitment activities.</p>
+          </div>
+        </div>
+        <div class="dashboard-section">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>Job Posted — Sr. DevOps Engineer</strong>
+                <p>By Admin · CloudSystems Inc.</p>
+                <p class="notif-time">Today, 10:32 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-content"><strong>Candidate Shortlisted — Rahul Mehta</strong>
+                <p>For Product Manager role at Nexus</p>
+                <p class="notif-time">Today, 9:15 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot amber"></div>
+              <div class="timeline-content"><strong>New Employer Account Created</strong>
+                <p>HireNow Corp · Verified by admin</p>
+                <p class="notif-time">Yesterday, 4:48 PM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot blue"></div>
+              <div class="timeline-content"><strong>Payment Received — AI Dynamics</strong>
+                <p>Invoice #INV-2025-042 · Premium Plan</p>
+                <p class="notif-time">Yesterday, 2:30 PM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot red"></div>
+              <div class="timeline-content"><strong>Report Flagged — Suspicious Activity</strong>
+                <p>User "JobSeeker99" flagged for spam applications.</p>
+                <p class="notif-time">Yesterday, 11:15 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>Job Listing Updated — Data Scientist</strong>
+                <p>Salary range adjusted by Recruiter Aisha.</p>
+                <p class="notif-time">2 days ago, 3:20 PM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-content"><strong>Offer Accepted — Priya Sharma</strong>
+                <p>Role: Web Developer at TechCorp</p>
+                <p class="notif-time">2 days ago, 12:45 PM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot blue"></div>
+              <div class="timeline-content"><strong>New Integration Connected</strong>
+                <p>LinkedIn Jobs API synchronized successfully.</p>
+                <p class="notif-time">3 days ago, 10:00 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot amber"></div>
+              <div class="timeline-content"><strong>Profile Verified — Nexus</strong>
+                <p>Company documentation approved by admin.</p>
+                <p class="notif-time">3 days ago, 9:30 AM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot red"></div>
+              <div class="timeline-content"><strong>Application Rejected — Bulk Action</strong>
+                <p>42 legacy applications moved to archive.</p>
+                <p class="notif-time">4 days ago, 5:15 PM</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content"><strong>System Backup Completed</strong>
+                <p>Automatic cloud redundancy backup successful.</p>
+                <p class="notif-time">5 days ago, 2:00 AM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div id="settings" class="tab-pane">
+        <div class="dashboard-header">
+          <div class="dashboard-title">
+            <h2>System Settings</h2>
+            <p>Configure platform preferences and recruitment automation.</p>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <div class="card">
+            <h3 style="margin-bottom:20px; font-size:1.1rem;"><i class="fas fa-sliders-h"
+                style="color:var(--primary); margin-right:8px;"></i> General Preferences</h3>
+            <form onsubmit="event.preventDefault(); window.location.href='404.html'">
+              <div class="form-group"><label>Platform Name</label><input type="text" class="form-control"
+                  value="TalentBridge" /></div>
+              <div class="form-group"><label>Admin Email</label><input type="email" class="form-control"
+                  value="admin@talentbridge.in" /></div>
+              <div class="form-group"><label>Timezone</label>
+                <select class="form-control">
+                  <option>(GMT+05:30) India Standard Time</option>
+                  <option>(GMT+00:00) UTC</option>
+                  <option>(GMT-05:00) Eastern Time</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Job Posting Approval</label><select class="form-control">
+                  <option>Automatic</option>
+                  <option>Manual Review</option>
+                </select></div>
+              <button class="btn btn-primary" type="submit" style="width:100%;">Save General Settings</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-bottom:20px; font-size:1.1rem;"><i class="fas fa-shield-alt"
+                style="color:var(--danger); margin-right:8px;"></i> Security &amp; Privacy</h3>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Two-Factor Authentication</div>
+                  <div style="font-size:.78rem; color:var(--text-muted);">Add an extra layer of security</div>
+                </div>
+                <div
+                  style="width:40px; height:20px; background:var(--primary); border-radius:20px; position:relative; cursor:pointer;"
+                  onclick="window.location.href='404.html'">
+                  <div
+                    style="width:16px; height:16px; background:#fff; border-radius:50%; position:absolute; right:2px; top:2px;">
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:.9rem;">Session Timeout</div>
+                  <div style="font-size:.78rem; color:var(--text-muted);">Auto-logout after inactivity</div>
+                </div>
+                <select class="form-control" style="width:100px; padding:6px 10px; font-size:.8rem;">
+                  <option>30 mins</option>
+                  <option>1 hour</option>
+                  <option>4 hours</option>
+                </select>
+              </div>
+              <hr style="border:0; border-top:1px solid var(--border);">
+              <button class="btn btn-secondary btn-sm"
+                style="width:100%; border-color:var(--danger); color:var(--danger);"
+                onclick="window.location.href='404.html'">Purge All Active Sessions</button>
+            </div>
+          </div>
+
+
+
+          <div class="card" style="margin-top:0px;">
+            <h3 style="margin-bottom:20px; font-size:1.1rem;"><i class="fas fa-terminal"
+                style="color:var(--secondary); margin-right:8px;"></i> API &amp; Integrations</h3>
+            <div class="form-group">
+              <label>Master API Key</label>
+              <div style="display:flex; gap:8px;">
+                <input type="password" class="form-control" value="••••••••••••••••" readonly>
+                <button class="btn btn-secondary btn-sm" onclick="window.location.href='404.html'"><i
+                    class="fas fa-copy"></i></button>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:10px;">
+              <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="window.location.href='404.html'">Webhook Docs</button>
+              <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="window.location.href='404.html'">Regenerate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
